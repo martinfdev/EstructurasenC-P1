@@ -28,6 +28,7 @@ public:
     void showC();
     Node<T>* buscarC(T);
     Node<T> *buscar(T);
+    Node<T>* getPrimero();
     void show();
     bool isEmpty();
     void reportS();

@@ -512,6 +512,11 @@ T ListaDoble<T>::getDataC()
     }
 }
 
+//devuelve el primer nodo e la lista
+template <typename T>
+Node<T>* ListaDoble<T>::getPrimero(){return primero;}
+
+
 //destructor de la lista
 template <typename T>
 ListaDoble<T>::~ListaDoble()
