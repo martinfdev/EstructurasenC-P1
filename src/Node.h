@@ -6,7 +6,7 @@
 */
 
 //clase plantilla nodo tipo de dato no definido
-#ifdef NODE_H
+#ifndef NODE_H
 #define NODE_H
 
 template <class T> 
