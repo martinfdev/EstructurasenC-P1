@@ -1,29 +1,30 @@
 /* 
  * File:   Node.h
  * Author: pedro
- *
- * Created on June 4, 2020, 11:11 AM
-*/
-
-//clase plantilla nodo tipo de dato no definido
+ */
 #ifndef NODE_H
 #define NODE_H
+#include <string>
+#include <iostream>
+#include <stdlib.h> 
 
-template <class T> 
+using namespace std;
+
+template<class T>
 class Node
 {
-private:
-    T data;
-    Node *next, *behind;   
 public:
     Node();
     Node(T);
     void setNext(Node*);
-    void setBehin(Node*);
+    void setBehind(Node*);
     Node* getNext();
     Node* getBehind();
     T getData();
     ~Node();
+    private:
+    T data;
+    Node* next;
+    Node* behind;
 };
-#endif //NODE_H
-
+#endif /*NODE H*/

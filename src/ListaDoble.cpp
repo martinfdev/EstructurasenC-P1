@@ -133,7 +133,7 @@ template <typename T>
 void ListaDoble<T>::insertarUltimoC(T data)
 {
     insertarC(primero, data, false);
-    size++;
+
 }
 
 //metodo privado que espera como parameto un nodo n para eliminarlo de la lista

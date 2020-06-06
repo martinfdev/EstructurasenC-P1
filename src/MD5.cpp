@@ -332,3 +332,18 @@ std::string md5(const std::string str)
  
     return md5.hexdigest();
 }
+
+//return to 15 character
+std::string md15(const std::string str){
+  std::string character15 = md5(str);
+  std::string temp ="";
+  int len = character15.length();
+  char array_char[len+1];
+  strcpy(array_char, character15.c_str());
+  for (int i = 0; i < 15; i++)
+  {
+    temp = temp+array_char[i];
+  }
+  
+return temp;
+}
