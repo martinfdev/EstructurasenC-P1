@@ -10,7 +10,7 @@
 template <typename T, typename G>
 NodeAvl<T, G>::NodeAvl(){
     llave = 0;
-    altura = 0;
+    altura = 1;
     dato = 0;
     derecha = 0;
     izquierda = 0;
@@ -19,7 +19,7 @@ NodeAvl<T, G>::NodeAvl(){
 //sobrecarga de constructor
 template <typename T, typename G>
 NodeAvl<T, G>::NodeAvl(T dato_, G llave_):dato(dato_), llave(llave_){
-    altura = 0;
+    altura = 1;
     derecha = 0;
     izquierda = 0;
 }
