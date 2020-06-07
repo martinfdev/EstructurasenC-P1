@@ -1,0 +1,48 @@
+digraph G {
+rankdir=LR;
+node [shape=record, color=blue, width=0.5, height=0.5]; 
+
+node0 [label="{<a>|1|<b>}"];
+node1 [label="{<a>|2|<b>}"];
+node2 [label="{<a>|3|<b>}"];
+node3 [label="{<a>|4|<b>}"];
+node4 [label="{<a>|5|<b>}"];
+node5 [label="{<a>|6|<b>}"];
+node6 [label="{<a>|7|<b>}"];
+node7 [label="{<a>|8|<b>}"];
+node8 [label="{<a>|9|<b>}"];
+node9 [label="{<a>|10|<b>}"];
+node10 [label="{<a>|11|<b>}"];
+node11 [label="{<a>|12|<b>}"];
+node12 [label="{<a>|13|<b>}"];
+
+node0:b:c -> node1:a:c [arrowtail=dot, dir=both,tailclip=false];
+node1:b:c -> node2:a:c [arrowtail=dot, dir=both,tailclip=false];
+node2:b:c -> node3:a:c [arrowtail=dot, dir=both,tailclip=false];
+node3:b:c -> node4:a:c [arrowtail=dot, dir=both,tailclip=false];
+node4:b:c -> node5:a:c [arrowtail=dot, dir=both,tailclip=false];
+node5:b:c -> node6:a:c [arrowtail=dot, dir=both,tailclip=false];
+node6:b:c -> node7:a:c [arrowtail=dot, dir=both,tailclip=false];
+node7:b:c -> node8:a:c [arrowtail=dot, dir=both,tailclip=false];
+node8:b:c -> node9:a:c [arrowtail=dot, dir=both,tailclip=false];
+node9:b:c -> node10:a:c [arrowtail=dot, dir=both,tailclip=false];
+node10:b:c -> node11:a:c [arrowtail=dot, dir=both,tailclip=false];
+node11:b:c -> node12:a:c [arrowtail=dot, dir=both,tailclip=false];
+node12:b:c -> node0:a:c [arrowtail=dot, dir=both,tailclip=false];
+
+node1:a:c -> node0:b:c [arrowtail=dot, dir=both,tailclip=false];
+node2:a:c -> node1:b:c [arrowtail=dot, dir=both,tailclip=false];
+node3:a:c -> node2:b:c [arrowtail=dot, dir=both,tailclip=false];
+node4:a:c -> node3:b:c [arrowtail=dot, dir=both,tailclip=false];
+node5:a:c -> node4:b:c [arrowtail=dot, dir=both,tailclip=false];
+node6:a:c -> node5:b:c [arrowtail=dot, dir=both,tailclip=false];
+node7:a:c -> node6:b:c [arrowtail=dot, dir=both,tailclip=false];
+node8:a:c -> node7:b:c [arrowtail=dot, dir=both,tailclip=false];
+node9:a:c -> node8:b:c [arrowtail=dot, dir=both,tailclip=false];
+node10:a:c -> node9:b:c [arrowtail=dot, dir=both,tailclip=false];
+node11:a:c -> node10:b:c [arrowtail=dot, dir=both,tailclip=false];
+node12:a:c -> node11:b:c [arrowtail=dot, dir=both,tailclip=false];
+node0:a:c -> node12:b:c [arrowtail=dot, dir=both,tailclip=false];
+
+}
+

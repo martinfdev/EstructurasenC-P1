@@ -57,7 +57,7 @@ string Graphviz::end()
 bool Graphviz::dotGraphGenerator(string nameFile, string sourceDot)
 {
     string stringTmp = "dot -Tpng " + nameFile + ".dot -o " + nameFile + ".png";
-    string comandDisplay = "display " + nameFile + ".png &";
+    string comandDisplay = "pix " + nameFile + ".png &";
 
     if (createOrWriteFile(nameFile + ".dot", sourceDot))
     {

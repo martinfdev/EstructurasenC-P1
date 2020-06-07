@@ -4,7 +4,7 @@
  * Created on June 6, 2020, 15:33  
  */
 #ifndef NODEAVL_H
-#define NODEALV_H
+#define NODEAVL_H
 
 template  <class T>
 class NodeAvl

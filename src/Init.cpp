@@ -23,7 +23,7 @@ Init::Init()
 //metodo para hcer pruebas de funcionalidad
 void Init::test()
 {
-     /*
+     
     //prueba lista circular doble y grafico
     ListaDoble<std::string> *ld = new ListaDoble<std::string>();
     ld->insertarUltimoC("1");
@@ -41,7 +41,7 @@ void Init::test()
     ld->insertarUltimoC("13");
     //ld->reportStringC("listaCircular");
     Reporte *rep = new Reporte();
-    rep->ReporteListaDobleCircular(ld, "listaDoblecircular");*/
+    rep->ReporteListaDobleCircular(ld, "listaDoblecircular");
 
     /*Activo *ac = new Activo("Silla", "silla secretaria");
     cout << "Id Activo\t" << ac->getIdActivo() << endl;
@@ -49,7 +49,7 @@ void Init::test()
     cout << "Id Descripcion\t" << ac->getDescripcion() << endl;
     */
 
-   
+
 }
 
 Init::~Init() {}
