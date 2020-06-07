@@ -6,23 +6,28 @@
 #ifndef NODEAVL_H
 #define NODEAVL_H
 
-template  <class T>
+template  <class T, class G>
 class NodeAvl
 {
 private:
     T dato;
-    NodeAvl<T>* izquierda;
-    NodeAvl<T>* derecha;
+    G llave;
+    NodeAvl<T, G>* izquierda;
+    NodeAvl<T, G>* derecha;
     int altura;
 public:
     NodeAvl();
-    NodeAvl(T);
-    void setIzquierda(NodeAvl<T>*);
-    void setDerecha(NodeAvl<T>*);
+    NodeAvl(T, G);
+    void setIzquierda(NodeAvl<T, G>*);
+    void setDerecha(NodeAvl<T, G>*);
     void setDato(T);
-    NodeAvl<T>* getIzquierda();
-    NodeAvl<T>* getDerecha();
+    void setAltura(int);
+    void setLlave(G);
+    NodeAvl<T, G>* getIzquierda();
+    NodeAvl<T, G>* getDerecha();
     T getDato();
+    G getLlave();
+    int getAltura();
     ~NodeAvl();
 };
 #endif /*NODEAVL_H*/

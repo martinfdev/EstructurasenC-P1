@@ -12,20 +12,20 @@ template<class T, class G>
 class BAVL
 {
 private:
-    NodeAvl<T>* raiz;
+    NodeAvl<T, G>* raiz;
     bool datoRepetido;
-    int altura(NodeAvl<T>*);
-    NodeAvl<T>* nuevoNodo(G);
-    NodeAvl<T>* rotarDerecha(NodeAvl<T>*, G);
-    NodeAvl<T>* rotarIzquierda(NodeAvl<T>*, G);
-    int getEquilibrio(NodeAvl<T>*);
-    NodeAvl<T>* insertarInterno(NodeAvl<T>*, G);
-    void preOrden(NodeAvl<T>*);
+    int altura(NodeAvl<T, G>*);
+    G getMax(G, G);
+    NodeAvl<T, G>* rotarDerecha(NodeAvl<T, G>*);
+    NodeAvl<T, G>* rotarIzquierda(NodeAvl<T, G>*);
+    int getEquilibrio(NodeAvl<T, G>*);
+    NodeAvl<T, G>* insertarInterno(NodeAvl<T, G>*, G);
+    void preOrden(NodeAvl<T, G>*);
 
 public:
     BAVL();
     void insertar(T);
-    NodeAvl<T>* getRaiz();
+    NodeAvl<T, G>* getRaiz();
     ~BAVL();
 };
 #endif /*BAVL_H*/
