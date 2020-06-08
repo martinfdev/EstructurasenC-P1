@@ -21,12 +21,16 @@ private:
     NodeAvl<T, G>* rotarIzquierda(NodeAvl<T, G>*);
     int getEquilibrio(NodeAvl<T, G>*);
     NodeAvl<T, G>* insertarInterno(NodeAvl<T, G>*, T, G);
-    void preOrden(NodeAvl<T, G>*);
+    void pre_orden(NodeAvl<T, G>*);
+    NodeAvl<T, G>* nodoValorMinimo(NodeAvl<T, G>*);
+    NodeAvl<T, G>* eliminarNodo(NodeAvl<T, G>*, G);
 
 public:
     TAVL();
     void insertar(T, G);
     NodeAvl<T, G>* getRaiz();
+    void preOrden();
+    void eliminar(G);
     ~TAVL();
 };
 #endif /*TAVL_H*/

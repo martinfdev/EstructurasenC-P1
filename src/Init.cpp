@@ -9,22 +9,24 @@
 #include "Node.cpp"
 #include "NodeAvl.cpp"
 #include "ListaDoble.cpp"
+#include "TAVL.cpp"
 #include "Lista.cpp"
 #include "Activo.cpp"
 #include "Graphviz.cpp"
 #include "Reporte.cpp"
+#include "Usuario.cpp"
+#include "MD5.cpp"
 
 using std::string;
 
 Init::Init()
 {
-   
 }
 
 //metodo para hcer pruebas de funcionalidad
 void Init::test()
 {
-    /* 
+  /* 
     //prueba lista circular doble y grafico
     ListaDoble<std::string> *ld = new ListaDoble<std::string>();
     ld->insertarUltimoC("1");
@@ -45,17 +47,44 @@ void Init::test()
     rep->ReporteListaDobleCircular(ld, "listaDoblecircular");
     */
 
-    /*Activo *ac = new Activo("Silla", "silla secretaria");
+  /*Activo *ac = new Activo("Silla", "silla secretaria");
     cout << "Id Activo\t" << ac->getIdActivo() << endl;
     cout << "Id Nombre\t" << ac->getNombre() << endl;
     cout << "Id Descripcion\t" << ac->getDescripcion() << endl;
     */
-   
-   /*
+
+  /*
    NodeAvl<string, string> *nodo =  new NodeAvl<string, string>("datos", "llave");
    cout<<nodo->getDato()<<endl;
    cout<<nodo->getLlave()<<endl;
    */
-}
+  
+  TAVL<Activo*, string> *t = new TAVL<Activo*, string>();
+  t->insertar(0, "A");
+  t->insertar(0, "B");
+  t->insertar(0, "C");
+  t->insertar(0, "D");
+  t->insertar(0, "E");
+  t->insertar(0, "F");
+  t->insertar(0, "G");
+  t->insertar(0, "H");
+  t->insertar(0, "Z");
+  t->preOrden();
+  t->eliminar("D");
+  t->preOrden();
+  Reporte *rep = new Reporte();
+  rep->reporteAVL(t->getRaiz());
+  
 
+  /*
+  string a, b;
+  a = "Antonio";
+  b = "Pedro";
+
+  if (a > b)
+    std::cout << a << std::endl;
+  else
+   std::cout << b <<std::endl; 
+  */
+}
 Init::~Init() {}

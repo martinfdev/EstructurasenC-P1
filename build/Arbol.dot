@@ -1,0 +1,30 @@
+digraph G {
+node[fontname="Arial", color="blue"]
+edge [color="green"]
+E -> B;
+B -> A;
+null0 [shape=point];
+A-> null0;
+null1 [shape=point];
+A -> null1;
+B -> C
+null2 [shape=point];
+C-> null2;
+null3 [shape=point];
+C -> null3;
+E -> G
+G -> F;
+null4 [shape=point];
+F-> null4;
+null5 [shape=point];
+F -> null5;
+G -> H
+null6 [shape=point];
+H-> null6;
+H -> Z
+null7 [shape=point];
+Z-> null7;
+null8 [shape=point];
+Z -> null8;
+}
+

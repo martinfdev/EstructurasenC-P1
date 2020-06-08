@@ -7,12 +7,13 @@
 #include "Reporte.h"
 #include <string>
 
+using std::string;
 
 Reporte::Reporte()
 {
 }
 
-
+//reporte de lista doblemente circular
 void Reporte::ReporteListaDobleCircular(ListaDoble<std::string> *lista_circular, std::string nameDot){
 Graphviz *graph = new Graphviz();
     graph->addln(graph->start_graph());
@@ -50,6 +51,47 @@ Graphviz *graph = new Graphviz();
     graph->dotGraphGenerator(nameDot, graph->getDotSource());
 }
 
+
+//reporte del arbol avl metodo privado por recursividad
+void Reporte::reporteArbolAvl(NodeAvl<Activo*, string>* raiz, Graphviz* graph){
+     static int count = 0;
+    if (raiz != nullptr)
+    {
+        if (raiz->getIzquierda())
+        {
+            graph->addln(raiz->getLlave() + " -> " + raiz->getIzquierda()->getLlave()+";");
+            reporteArbolAvl(raiz->getIzquierda(), graph);
+        }
+        else
+        {
+            graph->addln("null"+to_string(count)+" [shape=point];");
+            graph->addln(raiz->getLlave()+ "-> null"+to_string(count)+";");
+            count++;
+        }
+        if (raiz->getDerecha())
+        {
+            graph->addln(raiz->getLlave() + " -> " + raiz->getDerecha()->getLlave());
+            reporteArbolAvl(raiz->getDerecha(), graph);
+        }
+        else
+        {
+            graph->addln("null"+to_string(count)+" [shape=point];");
+            graph->addln(raiz->getLlave() +" -> null"+to_string(count)+";");
+            count++;
+        }
+    }
+}
+
+//metodo publico para el reporte del arbol avl
+void Reporte::reporteAVL(NodeAvl<Activo*, string>* raiz){
+    Graphviz *graph = new Graphviz();
+    graph->addln(graph->start_graph());
+    graph->addln("node[fontname=\"Arial\", color=\"blue\"]");
+    graph->addln("edge [color=\"green\"]");
+    reporteArbolAvl(raiz, graph);
+    graph->addln(graph->end());
+    graph->dotGraphGenerator("Arbol", graph->getDotSource());
+}
 
 Reporte::~Reporte()
 {

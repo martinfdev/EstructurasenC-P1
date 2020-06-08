@@ -1,7 +1,7 @@
 
 
 #include "Activo.h"
-#include "MD5.cpp"
+#include "MD5.h"
 #include <string>
 
 //constructor
