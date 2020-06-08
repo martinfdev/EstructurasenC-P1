@@ -90,7 +90,7 @@ void Reporte::reporteAVL(NodeAvl<Activo*, string>* raiz){
     graph->addln("edge [color=\"green\"]");
     reporteArbolAvl(raiz, graph);
     graph->addln(graph->end());
-    graph->dotGraphGenerator("Arbol", graph->getDotSource());
+    graph->dotGraphGenerator("ArbolAVL", graph->getDotSource());
 }
 
 Reporte::~Reporte()
