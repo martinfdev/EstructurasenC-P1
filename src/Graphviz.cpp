@@ -2,8 +2,6 @@
  * File:   Graphviz.cpp
  * Author: pedro
  */
-
-#include "File.h"
 #include <cstdlib>
 #include <cstdio>
 #include <fstream>

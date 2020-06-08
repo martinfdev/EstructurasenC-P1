@@ -24,4 +24,4 @@ public:
     bool dotGraphGenerator(string, string);
     ~Graphviz();
 };
-#endif //GRAPHVIZ.H
+#endif //GRAPHVIZ_H
