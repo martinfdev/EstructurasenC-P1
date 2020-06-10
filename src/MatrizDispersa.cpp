@@ -384,7 +384,7 @@ void MatrizDispersa::report()
     graph->addln("node [shape=rectangle, color=blue, height=0.5, width=0.5];");
     graph->addln("edge [color= red];");
     graph->addln("graph[ nodesep = 0.5];");
-    graph->addln("nodeXY [label=\"y\\\\x\"];");
+    graph->addln("nodeXY [label=\"Emp\\\\Dep\"];");
     NodeM *tempY = root->getDown();
     NodeM *tempX = root->getRight();
     NodeM *aux, *aux2;

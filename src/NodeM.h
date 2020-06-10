@@ -1,4 +1,7 @@
-
+/* 
+ * File:   Node.h
+ * Author: pedro
+ */
 #ifndef NODEM_H
 #define NODEM_H
 #include <stdlib.h>

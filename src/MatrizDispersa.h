@@ -14,21 +14,21 @@ class MatrizDispersa
 private:
     NodeM *root;
     int sizeX, sizeY;
-    NodeM* search_Row_Column(NodeM *, string);
-    void insertSortRow(NodeM*, string);
-    void insertSortColumn(NodeM*, string);
+    NodeM* search_Row_Column(NodeM *, int);
+    void insertSortRow(NodeM*, int);
+    void insertSortColumn(NodeM*, int);
     void show(NodeM*);
     void insertNode(NodeM*, NodeM*, NodeM*);
     NodeM* lastNodeColumn(NodeM*);
     NodeM* lastNodeRow(NodeM*);
-    NodeM* NodeColumnMed(NodeM*, string);
-    NodeM* NodeRowMed(NodeM*, string);
+    NodeM* NodeColumnMed(NodeM*, int);
+    NodeM* NodeRowMed(NodeM*, int);
     string sameX();
-    bool posxyBusy(NodeM*, string, string);
+    bool posxyBusy(NodeM*, int, int);
     Graphviz* graph;
 public:
     MatrizDispersa();
-    void insertMatrix(string, string, string);
+    void insertMatrix(int, int, string);
     bool isEmpty();
     int getSizeX();
     int getSizeY();  

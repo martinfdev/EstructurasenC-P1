@@ -1,4 +1,7 @@
-
+/* 
+ * File:   NodeM.cpp
+ * Author: pedro
+ */
 #include "NodeM.h"
 #include <string>
 using std::string;

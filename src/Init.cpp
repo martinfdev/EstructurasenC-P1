@@ -8,6 +8,7 @@
 #include "Init.h"
 #include "Node.cpp"
 #include "NodeAvl.cpp"
+#include "NodeM.cpp"
 #include "ListaDoble.cpp"
 #include "TAVL.cpp"
 #include "Lista.cpp"
@@ -15,6 +16,7 @@
 #include "Graphviz.cpp"
 #include "Reporte.cpp"
 #include "Usuario.cpp"
+#include "MatrizDispersa.cpp"
 #include "MD5.cpp"
 
 using std::string;
@@ -58,7 +60,7 @@ void Init::test()
    cout<<nodo->getDato()<<endl;
    cout<<nodo->getLlave()<<endl;
    */
-  
+  /*
   TAVL<Activo*, string> *t = new TAVL<Activo*, string>();
   t->insertar(0, "A");
   t->insertar(0, "B");
@@ -74,7 +76,7 @@ void Init::test()
   t->preOrden();
   Reporte *rep = new Reporte();
   rep->reporteAVL(t->getRaiz());
-  
+  */
 
   /*
   string a, b;
@@ -86,5 +88,10 @@ void Init::test()
   else
    std::cout << b <<std::endl; 
   */
+  MatrizDispersa *md = new MatrizDispersa();
+  md->insertMatrix(2,5, "pedro");
+  md->insertMatrix(4,5, "Juan");
+  md->report();
+
 }
 Init::~Init() {}
