@@ -299,7 +299,44 @@ void TAVL<T, G>::eliminar(G llave)
 
 //metodo que devuelve el nodo raiz para reporte
 template <typename T, typename G>
-NodeAvl<T, G>* TAVL<T, G>::getRaiz(){return raiz;}
+NodeAvl<T, G> *TAVL<T, G>::getRaiz() { return raiz; }
+
+//metodo para buscar un nodo internamente devuelve el nodo buscado
+template <typename T, typename G>
+NodeAvl<T, G> *TAVL<T, G>::buscarInterno(NodeAvl<T, G> *root, G llave)
+{
+    //caso base la raiz es nula o el dato esta presente
+    if (root == nullptr || root->getLlave() == llave)
+    {
+        return root;
+    }
+    // el valor de del rado de la raiz es mayor que el dato buscado
+    if (root->getLlave() > llave)
+    {
+        return buscarInterno(root->getIzquierda(), llave);
+    }
+    return buscarInterno(root->getDerecha(), llave);
+}
+
+//devuelve el nodo si lo encuenta
+template <typename T, typename G>
+NodeAvl<T, G> *TAVL<T, G>::buscar(G llave)
+{
+    return buscarInterno(raiz, llave);
+}
+
+//metodo para actualizar un nodo
+template <typename T, typename G>
+void TAVL<T, G>::actualizar(NodeAvl<T, G> *nuevo, G nueva_llave)
+{
+    if (nuevo)
+    {
+        eliminar(nuevo->getLlave());
+        insertarInterno(raiz, nuevo->getDato(), nueva_llave);
+    }
+    else
+        cout << "No existe nodo para actualizar\n";
+}
 
 //destructor
 template <typename T, typename G>

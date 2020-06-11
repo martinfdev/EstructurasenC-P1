@@ -18,16 +18,26 @@
 #include "Usuario.cpp"
 #include "MatrizDispersa.cpp"
 #include "MD5.cpp"
+#include "Menu.cpp"
 
 using std::string;
 
 Init::Init()
 {
+  matriz = new MatrizDispersa();
+  historialT = new ListaDoble<Transaccion*>();
+  menu = new Menu();
+}
+
+//metodo donde se inicia el programa
+void Init::start(){
+
 }
 
 //metodo para hcer pruebas de funcionalidad
 void Init::test()
 {
+
   /* 
     //prueba lista circular doble y grafico
     ListaDoble<std::string> *ld = new ListaDoble<std::string>();
@@ -60,24 +70,54 @@ void Init::test()
    cout<<nodo->getDato()<<endl;
    cout<<nodo->getLlave()<<endl;
    */
-  /*
-  TAVL<Activo*, string> *t = new TAVL<Activo*, string>();
-  t->insertar(0, "A");
-  t->insertar(0, "B");
-  t->insertar(0, "C");
-  t->insertar(0, "D");
-  t->insertar(0, "E");
-  t->insertar(0, "F");
-  t->insertar(0, "G");
-  t->insertar(0, "H");
-  t->insertar(0, "Z");
+  //incializamos un arbol avl pasando como parametro el timpo de datos a almacenar
+  //y el otro tipo de dato como llave para el almacenamiento <Tipo de dato, LLave>TAVL
+ /* TAVL<Activo *, int> *t = new TAVL<Activo *, int>();
+  cout << "insertar 10, 8, 9, 15, 12, 2, 1, 20, 30\n\n";
+  t->insertar(0, 10);
+  t->insertar(0, 8);
+  t->insertar(0, 9);
+  cout << "Rotacion doble Izquierda-Derecha\n";
+  cout << "Pre-Orden\n";
   t->preOrden();
-  t->eliminar("D");
+  cout << "\n";
+  t->insertar(0, 15);
+  t->insertar(0, 12);
+  cout << "Rotacion doble Derecha-Izquierda\n";
+  cout << "Pre-Orden\n";
   t->preOrden();
+  cout << "\n";
+  t->insertar(0, 2);
+  t->insertar(0, 1);
+  cout << "Rotacion simple Derecha \n";
+  cout << "Pre-Orden\n";
+  t->preOrden();
+  cout << "\n";
+  t->insertar(0, 20);
+  t->insertar(0, 30);
+  cout << "Rotacion Simple Izquierda\n";
+  cout << "Pre-Orden\n";
+  t->preOrden();
+
+  cout << "Actualizar el nodo 9 a 100\n";
+  t->actualizar(t->buscar(9), 100);
+  cout << "Pre-Orden\n";
+  t->preOrden();
+
+  cout << "Eliminar 15\n";
+  t->eliminar(15);
+  cout << "Pre-Orden\n";
+  t->preOrden();
+
+  cout << "Buscar 2\n";
+  if (t->buscar(2))
+    cout << "true\n";
+  else
+    cout << "false\n";
+
   Reporte *rep = new Reporte();
   rep->reporteAVL(t->getRaiz());
-  */
-
+*/
   /*
   string a, b;
   a = "Antonio";
@@ -88,6 +128,7 @@ void Init::test()
   else
    std::cout << b <<std::endl; 
   */
+  /*
   MatrizDispersa *md = new MatrizDispersa();
   md->insertMatrix("Guatemala","ZS", new Usuario("Pedro", "password"));
   md->insertMatrix("Huehue","LARSA", new Usuario("Lucy", "password"));
@@ -102,9 +143,7 @@ void Init::test()
   md->insertMatrix("Nenton","LARSA", new Usuario("D", "password"));
   md->insertMatrix("Guatemala","LAR", new Usuario("GE", "password"));
   md->insertMatrix("Xela","LSA", new Usuario("Gloria", "password"));
-  
   md->insertMatrix("Guatemala","RS", new Usuario("Eu", "password"));
-  
-  md->report();
+  md->report();*/
 }
 Init::~Init() {}

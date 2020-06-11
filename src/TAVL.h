@@ -24,6 +24,7 @@ private:
     void pre_orden(NodeAvl<T, G>*);
     NodeAvl<T, G>* nodoValorMinimo(NodeAvl<T, G>*);
     NodeAvl<T, G>* eliminarNodo(NodeAvl<T, G>*, G);
+    NodeAvl<T, G>* buscarInterno(NodeAvl<T, G>*, G);
 
 public:
     TAVL();
@@ -31,6 +32,8 @@ public:
     NodeAvl<T, G>* getRaiz();
     void preOrden();
     void eliminar(G);
+    NodeAvl<T, G>* buscar(G);
+    void actualizar(NodeAvl<T, G>*, G);
     ~TAVL();
 };
 #endif /*TAVL_H*/
