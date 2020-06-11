@@ -1,7 +1,4 @@
-/* 
- * File:   NodeM.cpp
- * Author: pedro
- */
+
 #include "NodeM.h"
 #include <string>
 using std::string;
@@ -10,7 +7,7 @@ NodeM::NodeM(string data)
 {
     this->data = data;
     this->x, this->y = 0;
-    this->down = this->up = this->left = this->right = this->front = this->behind = nullptr;
+    this->down = this->up = this->left = this->right = nullptr;
 }
 
 NodeM::NodeM(int x, int y, string data)
@@ -18,7 +15,7 @@ NodeM::NodeM(int x, int y, string data)
     this->data = data;
     this->x = x;
     this->y = y;
-    this->down = this->up = this->left = this->right = this->front = this->behind = nullptr;
+    this->down = this->up = this->left = this->right = nullptr;
 }
 
 void NodeM::setLeft(NodeM *left)
@@ -41,12 +38,9 @@ void NodeM::setDown(NodeM *down)
     this->down = down;
 }
 
-void NodeM::setFront(NodeM *front ){
-    this->front = front;
-}
-
-void NodeM::setBehind(NodeM *behind){
-    this->behind = behind;
+void NodeM::setData(string data_)
+{
+    data = data_;
 }
 
 string NodeM::getData()
@@ -65,9 +59,5 @@ NodeM *NodeM::getLeft() { return left; }
 NodeM *NodeM::getUp() { return up; }
 
 NodeM *NodeM::getDown() { return down; }
-
-NodeM *NodeM::getFront() { return front; }
-
-NodeM *NodeM::getBehind() { return behind; }
 
 NodeM::~NodeM() {}

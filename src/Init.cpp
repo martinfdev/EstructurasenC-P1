@@ -89,9 +89,9 @@ void Init::test()
    std::cout << b <<std::endl; 
   */
   MatrizDispersa *md = new MatrizDispersa();
-  md->insertMatrix(2,5, "pedro");
-  md->insertMatrix(4,5, "Juan");
+  md->insertMatrix(1,0, "hola");
+  md->insertMatrix(1,1, "mides");
+  
   md->report();
-
 }
 Init::~Init() {}

@@ -1,0 +1,46 @@
+digraph G {
+rankdir = TB;
+node [shape=rectangle, color=blue, height=0.5, width=0.5];
+edge [color= red];
+graph[ nodesep = 0.5];
+nodeXY [label="Emp\\Dep"];
+nodeXGuatemala [label="Guatemala"];
+nodeXHuehuetenango [label="Huehuetenango"];
+
+nodeYLARSA [label="LARSA"];
+nodeYLF [label="LF"];
+nodeYLG [label="LG"];
+nodeYSOS [label="SOS"];
+
+nodevGuatemalaLARSA [label="Juan"];
+nodevGuatemalaLF [label="Mario"];
+nodevGuatemalaLG [label="Susan"];
+nodevGuatemalaSOS [label="Pedro"];
+nodevHuehuetenangoSOS [label="Aracely"];
+
+nodeXY -> nodeXGuatemala [dir=both];
+nodeXGuatemala -> nodeXHuehuetenango [dir=both];
+
+nodeXY -> nodeYLARSA [dir=both];
+nodeYLARSA -> nodeYLF [dir=both];
+nodeYLF -> nodeYLG [dir=both];
+nodeYLG -> nodeYSOS [dir=both];
+
+nodeXGuatemala -> nodevGuatemalaLARSA [dir=both];
+nodevGuatemalaSOS -> nodevGuatemalaLG [dir=both];
+nodevGuatemalaLARSA -> nodevGuatemalaLF [dir=both];
+nodevGuatemalaLF -> nodevGuatemalaLG [dir=both];
+nodeXHuehuetenango -> nodevHuehuetenangoSOS [dir=both];
+nodeYLARSA -> nodevGuatemalaLARSA [constraint=false, dir=both];
+nodeYLF -> nodevGuatemalaLF [constraint=false, dir=both];
+nodeYLG -> nodevGuatemalaLG [constraint=false, dir=both];
+nodeYSOS -> nodevGuatemalaSOS [constraint=false, dir=both];
+nodevGuatemalaSOS -> nodevHuehuetenangoSOS [constraint=false, dir=both];
+
+{rank=same; nodeXY; nodeXGuatemala; nodeXHuehuetenango; }
+{rank=same; nodeYLARSA; nodevGuatemalaLARSA; }
+{rank=same; nodeYLF; nodevGuatemalaLF; }
+{rank=same; nodeYLG; nodevGuatemalaLG; }
+{rank=same; nodeYSOS; nodevGuatemalaSOS; nodevHuehuetenangoSOS; }
+}
+

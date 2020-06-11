@@ -88,6 +88,11 @@ bool Graphviz::createOrWriteFile(string nameFile, string textGraph)
     }
 }
 
+//limpiar el string dot
+void Graphviz::setDotSource(){
+    dotSource = "";
+}
+
 Graphviz::~Graphviz()
 {
 }
