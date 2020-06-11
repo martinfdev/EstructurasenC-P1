@@ -17,7 +17,7 @@ void MatrizDispersa::insertMatrix(string x, string y, Usuario *usuario)
     NodeM *tmpY = search_Row_Column(root->getDown(), y);
     NodeM *tmpX = search_Row_Column(root->getRight(), x);
 
-    //nuevo nodo de new_node
+    //nuevo nodo de Usuario
     NodeM *new_node = new NodeM(x, y, usuario);
 
     if (tmpY == nullptr && tmpX == nullptr)
@@ -59,7 +59,8 @@ void MatrizDispersa::insertSortColumn(NodeM *newX, string x)
     }
     else
     {
-        while (tmp->getRight() != nullptr && tmp->getRight()->getX() < x)
+        //eliminar el formato de cometario para que se inserte de manera ordenda ascendente
+        while (tmp->getRight() != nullptr /*&& tmp->getRight()->getX() < x*/)
         {
             tmp = tmp->getRight();
         }
@@ -93,7 +94,8 @@ void MatrizDispersa::insertSortRow(NodeM *newY, string y)
     }
     else
     {
-        while (tmp->getDown() != nullptr && tmp->getDown()->getY() < y)
+        //eliminar cometario para que se ondene de manera ascendente en la insercion
+        while (tmp->getDown() != nullptr /*&& tmp->getDown()->getY() < y*/)
         {
             tmp = tmp->getDown();
         }
@@ -169,7 +171,7 @@ void MatrizDispersa::showY()
     }
 }
 
-//devuelve booleano verdadero si la columna o fila ya existe para no crearse de nuevo
+//devuelve El ultimo nodo si la columna o fila ya existe para no crearse de nuevo
 NodeM *MatrizDispersa::search_Row_Column(NodeM *n, string position)
 {
     if (root->getRight() == n)

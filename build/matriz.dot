@@ -5,42 +5,82 @@ edge [color= red];
 graph[ nodesep = 0.5];
 nodeXY [label="Emp\\Dep"];
 nodeXGuatemala [label="Guatemala"];
-nodeXHuehuetenango [label="Huehuetenango"];
+nodeXHuehue [label="Huehue"];
+nodeXSanta_Rosa [label="Santa_Rosa"];
+nodeXMazate [label="Mazate"];
+nodeXJalapa [label="Jalapa"];
+nodeXNenton [label="Nenton"];
+nodeXXela [label="Xela"];
 
+nodeYZS [label="ZS"];
 nodeYLARSA [label="LARSA"];
-nodeYLF [label="LF"];
-nodeYLG [label="LG"];
-nodeYSOS [label="SOS"];
+nodeYRSA [label="RSA"];
+nodeYLHRSA [label="LHRSA"];
+nodeYARSA [label="ARSA"];
+nodeYLAR [label="LAR"];
+nodeYLSA [label="LSA"];
+nodeYRS [label="RS"];
 
-nodevGuatemalaLARSA [label="Juan"];
-nodevGuatemalaLF [label="Mario"];
-nodevGuatemalaLG [label="Susan"];
-nodevGuatemalaSOS [label="Pedro"];
-nodevHuehuetenangoSOS [label="Aracely"];
+nodevGuatemalaZS [label="Pedro"];
+nodevHuehueLARSA [label="Lucy"];
+nodevMazateLARSA [label="A"];
+nodevJalapaLARSA [label="B"];
+nodevNentonLARSA [label="D"];
+nodevGuatemalaRSA [label="M"];
+nodevGuatemalaLHRSA [label="G"];
+nodevSanta_RosaARSA [label="Z"];
+nodevGuatemalaLAR [label="GE"];
+nodevXelaLSA [label="Gloria"];
+nodevGuatemalaRS [label="Eu"];
 
 nodeXY -> nodeXGuatemala [dir=both];
-nodeXGuatemala -> nodeXHuehuetenango [dir=both];
+nodeXGuatemala -> nodeXHuehue [dir=both];
+nodeXHuehue -> nodeXSanta_Rosa [dir=both];
+nodeXSanta_Rosa -> nodeXMazate [dir=both];
+nodeXMazate -> nodeXJalapa [dir=both];
+nodeXJalapa -> nodeXNenton [dir=both];
+nodeXNenton -> nodeXXela [dir=both];
 
-nodeXY -> nodeYLARSA [dir=both];
-nodeYLARSA -> nodeYLF [dir=both];
-nodeYLF -> nodeYLG [dir=both];
-nodeYLG -> nodeYSOS [dir=both];
+nodeXY -> nodeYZS [dir=both];
+nodeYZS -> nodeYLARSA [dir=both];
+nodeYLARSA -> nodeYRSA [dir=both];
+nodeYRSA -> nodeYLHRSA [dir=both];
+nodeYLHRSA -> nodeYARSA [dir=both];
+nodeYARSA -> nodeYLAR [dir=both];
+nodeYLAR -> nodeYLSA [dir=both];
+nodeYLSA -> nodeYRS [dir=both];
 
-nodeXGuatemala -> nodevGuatemalaLARSA [dir=both];
-nodevGuatemalaSOS -> nodevGuatemalaLG [dir=both];
-nodevGuatemalaLARSA -> nodevGuatemalaLF [dir=both];
-nodevGuatemalaLF -> nodevGuatemalaLG [dir=both];
-nodeXHuehuetenango -> nodevHuehuetenangoSOS [dir=both];
-nodeYLARSA -> nodevGuatemalaLARSA [constraint=false, dir=both];
-nodeYLF -> nodevGuatemalaLF [constraint=false, dir=both];
-nodeYLG -> nodevGuatemalaLG [constraint=false, dir=both];
-nodeYSOS -> nodevGuatemalaSOS [constraint=false, dir=both];
-nodevGuatemalaSOS -> nodevHuehuetenangoSOS [constraint=false, dir=both];
+nodeXGuatemala -> nodevGuatemalaZS [dir=both];
+nodevGuatemalaZS -> nodevGuatemalaRSA [dir=both];
+nodevGuatemalaRSA -> nodevGuatemalaLHRSA [dir=both];
+nodevGuatemalaLHRSA -> nodevGuatemalaLAR [dir=both];
+nodevGuatemalaLAR -> nodevGuatemalaRS [dir=both];
+nodeXHuehue -> nodevHuehueLARSA [dir=both];
+nodeXSanta_Rosa -> nodevSanta_RosaARSA [dir=both];
+nodeXMazate -> nodevMazateLARSA [dir=both];
+nodeXJalapa -> nodevJalapaLARSA [dir=both];
+nodeXNenton -> nodevNentonLARSA [dir=both];
+nodeXXela -> nodevXelaLSA [dir=both];
+nodeYZS -> nodevGuatemalaZS [constraint=false, dir=both];
+nodeYLARSA -> nodevHuehueLARSA [constraint=false, dir=both];
+nodevHuehueLARSA -> nodevMazateLARSA [constraint=false, dir=both];
+nodevMazateLARSA -> nodevJalapaLARSA [constraint=false, dir=both];
+nodevJalapaLARSA -> nodevNentonLARSA [constraint=false, dir=both];
+nodeYRSA -> nodevGuatemalaRSA [constraint=false, dir=both];
+nodeYLHRSA -> nodevGuatemalaLHRSA [constraint=false, dir=both];
+nodeYARSA -> nodevSanta_RosaARSA [constraint=false, dir=both];
+nodeYLAR -> nodevGuatemalaLAR [constraint=false, dir=both];
+nodeYLSA -> nodevXelaLSA [constraint=false, dir=both];
+nodeYRS -> nodevGuatemalaRS [constraint=false, dir=both];
 
-{rank=same; nodeXY; nodeXGuatemala; nodeXHuehuetenango; }
-{rank=same; nodeYLARSA; nodevGuatemalaLARSA; }
-{rank=same; nodeYLF; nodevGuatemalaLF; }
-{rank=same; nodeYLG; nodevGuatemalaLG; }
-{rank=same; nodeYSOS; nodevGuatemalaSOS; nodevHuehuetenangoSOS; }
+{rank=same; nodeXY; nodeXGuatemala; nodeXHuehue; nodeXSanta_Rosa; nodeXMazate; nodeXJalapa; nodeXNenton; nodeXXela; }
+{rank=same; nodeYZS; nodevGuatemalaZS; }
+{rank=same; nodeYLARSA; nodevHuehueLARSA; nodevMazateLARSA; nodevJalapaLARSA; nodevNentonLARSA; }
+{rank=same; nodeYRSA; nodevGuatemalaRSA; }
+{rank=same; nodeYLHRSA; nodevGuatemalaLHRSA; }
+{rank=same; nodeYARSA; nodevSanta_RosaARSA; }
+{rank=same; nodeYLAR; nodevGuatemalaLAR; }
+{rank=same; nodeYLSA; nodevXelaLSA; }
+{rank=same; nodeYRS; nodevGuatemalaRS; }
 }
 
