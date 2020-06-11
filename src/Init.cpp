@@ -89,9 +89,21 @@ void Init::test()
    std::cout << b <<std::endl; 
   */
   MatrizDispersa *md = new MatrizDispersa();
-  md->insertMatrix(1,0, "hola");
-  md->insertMatrix(1,1, "mides");
-  
+  md->insertMatrix("Guatemala","AS", new Usuario("Pedro", "password"));
+  md->insertMatrix("Guatemala","LARSA", new Usuario("M", "password"));
+  md->insertMatrix("Guatemala","RSA", new Usuario("G", "password"));
+  md->insertMatrix("Huehue","LARSA", new Usuario("Z", "password"));
+  md->insertMatrix("Huehue","LARSA", new Usuario("HG", "password"));
+  md->insertMatrix("Huehue","LARSA", new Usuario("A", "password"));
+  md->insertMatrix("Huehue","LARSA", new Usuario("B", "password"));
+  md->insertMatrix("Huehue","LARSA", new Usuario("C", "password"));
+  md->insertMatrix("Huehue","LARSA", new Usuario("D", "password"));
+  md->insertMatrix("Huehue","LARSA", new Usuario("D", "password"));
+ /* md->insertMatrix("Guatemala","LARSA", new Usuario("GE", "password"));
+  md->insertMatrix("Guatemala","LARSA", new Usuario("Gloria", "password"));
+  md->insertMatrix("Guatemala","LARSA", new Usuario("Lucy", "password"));
+  md->insertMatrix("Guatemala","LARSA", new Usuario("Eu", "password"));
+ */
   md->report();
 }
 Init::~Init() {}

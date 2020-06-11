@@ -1,21 +1,17 @@
 
 #include "NodeM.h"
 #include <string>
+
 using std::string;
 
-NodeM::NodeM(string data)
+NodeM::NodeM(Usuario *dato_) : dato(dato_)
 {
-    this->data = data;
-    this->x, this->y = 0;
-    this->down = this->up = this->left = this->right = nullptr;
+    this->down = this->up = this->left = this->right = behind = front = nullptr;
 }
 
-NodeM::NodeM(int x, int y, string data)
+NodeM::NodeM(string x_, string y_, Usuario *dato_) : dato(dato_), x(x_), y(y_)
 {
-    this->data = data;
-    this->x = x;
-    this->y = y;
-    this->down = this->up = this->left = this->right = nullptr;
+    this->down = this->up = this->left = this->right = behind = front = nullptr;
 }
 
 void NodeM::setLeft(NodeM *left)
@@ -38,19 +34,29 @@ void NodeM::setDown(NodeM *down)
     this->down = down;
 }
 
-void NodeM::setData(string data_)
+void NodeM::setFront(NodeM *front_)
 {
-    data = data_;
+    front = front_;
 }
 
-string NodeM::getData()
+void NodeM::setBehind(NodeM *behind_)
 {
-    return this->data;
+    behind = behind_;
 }
 
-int NodeM::getX() { return x; }
+void NodeM::setData(Usuario *dato_)
+{
+    dato = dato_;
+}
 
-int NodeM::getY() { return y; }
+Usuario *NodeM::getData()
+{
+    return dato;
+}
+
+string NodeM::getX() { return x; }
+
+string NodeM::getY() { return y; }
 
 NodeM *NodeM::getRight() { return right; }
 
@@ -59,5 +65,9 @@ NodeM *NodeM::getLeft() { return left; }
 NodeM *NodeM::getUp() { return up; }
 
 NodeM *NodeM::getDown() { return down; }
+
+NodeM *NodeM::getBehind() { return behind; }
+
+NodeM *NodeM::getFront() { return front; }
 
 NodeM::~NodeM() {}

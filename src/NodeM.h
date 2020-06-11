@@ -1,10 +1,10 @@
 
 #ifndef NODEM_H
 #define NODEM_H
-#include <stdlib.h>
+#include "Usuario.h"
 #include <string>
 
-
+using std::string;
 class NodeM
 {
 private:
@@ -12,24 +12,30 @@ private:
     NodeM *right;
     NodeM *up;
     NodeM *down;
-    std::string data;
-    int x, y;
+    NodeM *behind;
+    NodeM *front;
+    Usuario *dato;
+    string x, y;
 
 public:
-    NodeM(std::string);
-    NodeM(int, int, std::string);
+    NodeM(Usuario*);
+    NodeM(string, string, Usuario*);
     void setLeft(NodeM*);
     void setRight(NodeM *);
     void setUp(NodeM *);
     void setDown(NodeM *);
-    void setData(string);
+    void setFront(NodeM *);
+    void setBehind(NodeM *);
+    void setData(Usuario*);
     NodeM *getLeft();
     NodeM *getRight();
     NodeM *getUp();
     NodeM *getDown();
-    std::string getData();
-    int getX();
-    int getY();
+    NodeM *getFront();
+    NodeM *getBehind();
+    Usuario* getData();
+    string getX();
+    string getY();
     ~NodeM();
 };
 #endif //NODEM_H

@@ -3,27 +3,38 @@ rankdir = TB;
 node [shape=rectangle, color=blue, height=0.5, width=0.5];
 edge [color= red];
 graph[ nodesep = 0.5];
-nodeXY [label="y\\x"];
-nodeX1 [label="X=1"];
+nodeXY [label="Emp\\Dep"];
+nodeXGuatemala [label="Guatemala"];
+nodeXHuehue [label="Huehue"];
 
-nodeY0 [label="Y=0"];
-nodeY1 [label="Y=1"];
+nodeYAS [label="AS"];
+nodeYLARSA [label="LARSA"];
+nodeYRSA [label="RSA"];
 
-nodev10 [label="hola"];
-nodev11 [label="mides"];
+nodevGuatemalaAS [label="Pedro"];
+nodevGuatemalaLARSA [label="M"];
+nodevHuehueLARSA [label="Z"];
+nodevGuatemalaRSA [label="G"];
 
-nodeXY -> nodeX1 [dir=both];
+nodeXY -> nodeXGuatemala [dir=both];
+nodeXGuatemala -> nodeXHuehue [dir=both];
 
-nodeXY -> nodeY0 [dir=both];
-nodeY0 -> nodeY1 [dir=both];
+nodeXY -> nodeYAS [dir=both];
+nodeYAS -> nodeYLARSA [dir=both];
+nodeYLARSA -> nodeYRSA [dir=both];
 
-nodeX1 -> nodev10 [dir=both];
-nodev10 -> nodev11 [dir=both];
-nodeY0 -> nodev10 [constraint=false, dir=both];
-nodeY1 -> nodev11 [constraint=false, dir=both];
+nodeXGuatemala -> nodevGuatemalaAS [dir=both];
+nodevGuatemalaAS -> nodevGuatemalaLARSA [dir=both];
+nodevGuatemalaLARSA -> nodevGuatemalaRSA [dir=both];
+nodeXHuehue -> nodevHuehueLARSA [dir=both];
+nodeYAS -> nodevGuatemalaAS [constraint=false, dir=both];
+nodeYLARSA -> nodevGuatemalaLARSA [constraint=false, dir=both];
+nodevGuatemalaLARSA -> nodevHuehueLARSA [constraint=false, dir=both];
+nodeYRSA -> nodevGuatemalaRSA [constraint=false, dir=both];
 
-{rank=same; nodeXY; nodeX1; }
-{rank=same; nodeY0; nodev10; }
-{rank=same; nodeY1; nodev11; }
+{rank=same; nodeXY; nodeXGuatemala; nodeXHuehue; }
+{rank=same; nodeYAS; nodevGuatemalaAS; }
+{rank=same; nodeYLARSA; nodevGuatemalaLARSA; nodevHuehueLARSA; }
+{rank=same; nodeYRSA; nodevGuatemalaRSA; }
 }
 
