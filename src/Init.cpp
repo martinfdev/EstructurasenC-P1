@@ -20,21 +20,24 @@
 #include "MD5.cpp"
 #include "Menu.cpp"
 
+using std::cout;
 using std::string;
 
 Init::Init()
 {
   matriz = new MatrizDispersa();
-  historialT = new ListaDoble<Transaccion*>();
-  menu = new Menu();
+  historialT = new ListaDoble<Transaccion *>();
+  start(); // metodo que incializa todo
 }
 
 //metodo donde se inicia el programa
-void Init::start(){
-
+void Init::start()
+{
+  menu = new Menu(historialT, matriz);
+  menu->menuIni();
 }
 
-//metodo para hcer pruebas de funcionalidad
+//metodo para hacer pruebas de funcionalidad
 void Init::test()
 {
 
@@ -72,7 +75,7 @@ void Init::test()
    */
   //incializamos un arbol avl pasando como parametro el timpo de datos a almacenar
   //y el otro tipo de dato como llave para el almacenamiento <Tipo de dato, LLave>TAVL
- /* TAVL<Activo *, int> *t = new TAVL<Activo *, int>();
+  /* TAVL<Activo *, int> *t = new TAVL<Activo *, int>();
   cout << "insertar 10, 8, 9, 15, 12, 2, 1, 20, 30\n\n";
   t->insertar(0, 10);
   t->insertar(0, 8);
@@ -130,20 +133,38 @@ void Init::test()
   */
   /*
   MatrizDispersa *md = new MatrizDispersa();
-  md->insertMatrix("Guatemala","ZS", new Usuario("Pedro", "password"));
-  md->insertMatrix("Huehue","LARSA", new Usuario("Lucy", "password"));
-  md->insertMatrix("Guatemala","RSA", new Usuario("M", "password"));
-  md->insertMatrix("Guatemala","LHRSA", new Usuario("G", "password"));
-  md->insertMatrix("Santa_Rosa","ARSA", new Usuario("Z", "password"));
-  md->insertMatrix("Huehue","LARSA", new Usuario("HG", "password"));
-  md->insertMatrix("Mazate","LARSA", new Usuario("A", "password"));
-  md->insertMatrix("Jalapa","LARSA", new Usuario("B", "password"));
-  md->insertMatrix("Huehue","LARSA", new Usuario("C", "password"));
-  md->insertMatrix("Huehue","LARSA", new Usuario("D", "password"));
-  md->insertMatrix("Nenton","LARSA", new Usuario("D", "password"));
-  md->insertMatrix("Guatemala","LAR", new Usuario("GE", "password"));
-  md->insertMatrix("Xela","LSA", new Usuario("Gloria", "password"));
-  md->insertMatrix("Guatemala","RS", new Usuario("Eu", "password"));
-  md->report();*/
+  md->insertMatrix("Guatemala", "ZS", new Usuario("Pedro", "password"));
+  md->insertMatrix("Huehue", "LARSA", new Usuario("Lucy", "password"));
+  md->insertMatrix("Guatemala", "RSA", new Usuario("M", "password"));
+  md->insertMatrix("Guatemala", "LHRSA", new Usuario("G", "password"));
+  md->insertMatrix("Santa_Rosa", "ARSA", new Usuario("Z", "password"));
+  md->insertMatrix("Huehue", "LARSA", new Usuario("HG", "password"));
+  md->insertMatrix("Mazate", "LARSA", new Usuario("A", "password"));
+  md->insertMatrix("Jalapa", "LARSA", new Usuario("B", "password"));
+  md->insertMatrix("Huehue", "LARSA", new Usuario("C", "password"));
+  md->insertMatrix("Huehue", "LARSA", new Usuario("D", "password"));
+  md->insertMatrix("Nenton", "LARSA", new Usuario("D", "password"));
+  md->insertMatrix("Guatemala", "LAR", new Usuario("GE", "password"));
+  md->insertMatrix("Xela", "LSA", new Usuario("Gloria", "password"));
+  md->insertMatrix("Guatemala", "RS", new Usuario("Eu", "password"));
+   md->report();
+  Usuario *us = md->searchM("Guatemala", "LR");
+  if (us)
+    cout << us->getNombre() << "\n";
+    else
+    cout<<"false\n";
+    */
+  /* md->insertMatrix("Guatemala", "Zoo", new Usuario("Pedro", "p"));
+   md->insertMatrix("Xela", "Axe", new Usuario("Miguel","n"));
+   md->insertMatrix("Huehue","LG", new Usuario("Kevin", "k"));
+   md->insertMatrix("Xela", "LG", new Usuario("Juan", "j"));
+   md->insertMatrix("Xela", "Zoo", new Usuario("H", "j"));
+  // md->insertMatrix("Huehue", "Zoo", new Usuario("Ar", "j"));
+  // md->insertMatrix("Guatemala", "Axe", new Usuario("Juan", "j"));
+  // md->insertMatrix("Huehue", "Axe", new Usuario("Juan", "j"));
+  // md->insertMatrix("Guatemala", "LG", new Usuario("Juan", "j"));
+
+   md->report();
+ */
 }
 Init::~Init() {}

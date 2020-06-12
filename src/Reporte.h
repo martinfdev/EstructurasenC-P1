@@ -13,12 +13,12 @@
 class Reporte
 {
 private:
-    void reporteArbolAvl(NodeAvl<Activo*, int>*, Graphviz*);
+    void reporteArbolAvl(NodeAvl<Activo*, string>*, Graphviz*);
 public:
     Reporte();
     void ReporteListaDobleCircular(ListaDoble<std::string> *, std::string);
     void ReporteListaSimple(Lista<int>*);
-    void reporteAVL(NodeAvl<Activo*, int>*);
+    void reporteAVL(NodeAvl<Activo*, string>*);
     void reporteMtrizDispersa();
     ~Reporte();
 };

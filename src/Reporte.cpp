@@ -53,37 +53,37 @@ Graphviz *graph = new Graphviz();
 
 
 //reporte del arbol avl metodo privado por recursividad
-void Reporte::reporteArbolAvl(NodeAvl<Activo*, int>* raiz, Graphviz* graph){
+void Reporte::reporteArbolAvl(NodeAvl<Activo*, string>* raiz, Graphviz* graph){
      static int count = 0;
     if (raiz != nullptr)
     {
         if (raiz->getIzquierda())
         {
-            graph->addln(to_string(raiz->getLlave()) + " -> " + to_string(raiz->getIzquierda()->getLlave())+";");
+            graph->addln((raiz->getLlave()) + " -> " + (raiz->getIzquierda()->getLlave())+";");
             reporteArbolAvl(raiz->getIzquierda(), graph);
         }
         else
         {
             graph->addln("null"+to_string(count)+" [shape=point];");
-            graph->addln(to_string(raiz->getLlave())+ "-> null"+to_string(count)+";");
+            graph->addln((raiz->getLlave())+ "-> null"+to_string(count)+";");
             count++;
         }
         if (raiz->getDerecha())
         {
-            graph->addln(to_string(raiz->getLlave()) + " -> " + to_string(raiz->getDerecha()->getLlave()));
+            graph->addln((raiz->getLlave()) + " -> " + (raiz->getDerecha()->getLlave()));
             reporteArbolAvl(raiz->getDerecha(), graph);
         }
         else
         {
             graph->addln("null"+to_string(count)+" [shape=point];");
-            graph->addln(to_string(raiz->getLlave()) +" -> null"+to_string(count)+";");
+            graph->addln((raiz->getLlave()) +" -> null"+to_string(count)+";");
             count++;
         }
     }
 }
 
 //metodo publico para el reporte del arbol avl
-void Reporte::reporteAVL(NodeAvl<Activo*, int>* raiz){
+void Reporte::reporteAVL(NodeAvl<Activo*, string>* raiz){
     Graphviz *graph = new Graphviz();
     graph->addln(graph->start_graph());
     graph->addln("node[fontname=\"Arial\", color=\"blue\"]");

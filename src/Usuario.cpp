@@ -11,12 +11,12 @@ using std::string;
 
 //constructor sin parametro
 Usuario::Usuario(){
-    arbolAvl = new TAVL<Activo, string>();
+    arbolAvl = new TAVL<Activo*, string>();
 }
 
 //constructor con parametros
 Usuario::Usuario(string nombre_, string password_):nombre(nombre_), password(password_){
-    arbolAvl = new TAVL<Activo, string>();
+    arbolAvl = new TAVL<Activo*, string>();
 }
 
 //setters
@@ -33,7 +33,7 @@ string Usuario::getNombre(){return nombre;}
 
 string Usuario::getPassword(){return password;}
 
-TAVL<Activo, string>* Usuario::getArbolAvl(){return arbolAvl;}
+TAVL<Activo*, string>* Usuario::getArbolAvl(){return arbolAvl;}
 
 Usuario::~Usuario()
 {

@@ -15,7 +15,7 @@ using std::string;
 class Usuario
 {
 private:
-    TAVL<Activo, string> *arbolAvl;
+    TAVL<Activo*, string> *arbolAvl;
     string nombre, password;
 public:
     Usuario(/* args */);
@@ -24,7 +24,7 @@ public:
     void setPassword(string);
     string getNombre();
     string getPassword();
-    TAVL<Activo, string>* getArbolAvl();
+    TAVL<Activo*, string>* getArbolAvl();
     ~Usuario();
 };
 #endif /*USUARIO_H*/
