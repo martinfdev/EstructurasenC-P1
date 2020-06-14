@@ -9,6 +9,5 @@
 
 int main(int arg, char* arcgs[]){
     Init* start = new Init();
-    start->test();
     return 0;
 }

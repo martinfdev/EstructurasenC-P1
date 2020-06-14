@@ -11,11 +11,19 @@
 class Transaccion
 {
 private:
-    int idTransaccion, id_unico, tiempo_renta; //el tiempo de renta es en dias
-    std::string usuario_que_renta, departamento, empresa, fecha_renta;   
+    int tiempo_renta;//el tiempo de renta es en dias
+    string id_T, id_activo; 
+    string nombre_usuario, departamento, empresa, fecha_renta;   
 public:
     Transaccion();//sin parametros
-    Transaccion(int, int, int, std::string, std::string, std::string, std::string);
+    Transaccion(string, string, string, string, string, string, int);
+    string getIdT();
+    string getIdActivo();
+    string getNombreUsuario();
+    string getDepartamento();
+    string getEmpresa();
+    string fecha();
+    int getTiempo();
     ~Transaccion();
 };
 

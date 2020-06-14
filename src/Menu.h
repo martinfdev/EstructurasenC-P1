@@ -11,7 +11,7 @@
 #include "ListaDoble.h"
 #include "Transaccion.h"
 #include "MatrizDispersa.h"
-
+#include "TAVL.h"
 
 using std::string;
 
@@ -22,8 +22,12 @@ private:
     MatrizDispersa *matriz;
     void login();
     void menuAdmin();
-    void menuUsuario();
+    void menuUsuario(Usuario *);
     void crearUsuario();
+    void crearActivo(TAVL<Activo *, string> *);
+    void eliminarActivo(TAVL<Activo *, string> *);
+    void modificarActivo(TAVL<Activo*, string>*);
+    void modificandoActivo(Activo*);
 
 public:
     Menu(ListaDoble<Transaccion *> *, MatrizDispersa *);

@@ -5,6 +5,8 @@
  * Created on June 5, , 00:50 AM
 */
 #include "Reporte.h"
+#include "Activo.h"
+#include "TAVL.h"
 #include <string>
 
 using std::string;
@@ -59,24 +61,24 @@ void Reporte::reporteArbolAvl(NodeAvl<Activo*, string>* raiz, Graphviz* graph){
     {
         if (raiz->getIzquierda())
         {
-            graph->addln((raiz->getLlave()) + " -> " + (raiz->getIzquierda()->getLlave())+";");
+            graph->addln((raiz->getDato()->getNombre()) + " -> " + (raiz->getIzquierda()->getDato()->getNombre())+";");
             reporteArbolAvl(raiz->getIzquierda(), graph);
         }
         else
         {
             graph->addln("null"+to_string(count)+" [shape=point];");
-            graph->addln((raiz->getLlave())+ "-> null"+to_string(count)+";");
+            graph->addln((raiz->getDato()->getNombre())+ "-> null"+to_string(count)+";");
             count++;
         }
         if (raiz->getDerecha())
         {
-            graph->addln((raiz->getLlave()) + " -> " + (raiz->getDerecha()->getLlave()));
+            graph->addln((raiz->getDato()->getNombre()) + " -> " + (raiz->getDerecha()->getDato()->getNombre()));
             reporteArbolAvl(raiz->getDerecha(), graph);
         }
         else
         {
             graph->addln("null"+to_string(count)+" [shape=point];");
-            graph->addln((raiz->getLlave()) +" -> null"+to_string(count)+";");
+            graph->addln((raiz->getDato()->getNombre()) +" -> null"+to_string(count)+";");
             count++;
         }
     }
@@ -91,6 +93,16 @@ void Reporte::reporteAVL(NodeAvl<Activo*, string>* raiz){
     reporteArbolAvl(raiz, graph);
     graph->addln(graph->end());
     graph->dotGraphGenerator("ArbolAVL", graph->getDotSource());
+}
+
+//metodo inorden para el arbol avl imprimir datos para su eliminacion
+void Reporte::inorden(NodeAvl<Activo*, string>* root){
+    if (root)
+    {
+       inorden(root->getIzquierda());
+       cout<<"ID: "<<root->getLlave()<<";\tNombre: "<<root->getDato()->getNombre()<<"\n";
+       inorden(root->getDerecha());
+    }
 }
 
 Reporte::~Reporte()

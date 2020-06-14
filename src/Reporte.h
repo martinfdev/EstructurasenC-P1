@@ -20,6 +20,7 @@ public:
     void ReporteListaSimple(Lista<int>*);
     void reporteAVL(NodeAvl<Activo*, string>*);
     void reporteMtrizDispersa();
+    void inorden(NodeAvl<Activo*, string>*);
     ~Reporte();
 };
 #endif /*REPORTE_H*/
