@@ -5,22 +5,28 @@
 #ifndef ACTIVO_H
 #define ACTIVO_H
 #include <string>
+using std::string;
 
 class Activo
 {
 private:
-    std::string id_activo, nombre, descripcion;
+    int tiempo;
+    std::string id_activo, nombre, descripcion, duenio;
     bool disponible = true;
 
 public:
     Activo(/* args */);
-    Activo(std::string, std::string);
-    void setNombre(std::string);
-    void setDescripcion(std::string);
+    Activo(string, string, string);
+    void setNombre(string);
+    void setDescripcion(string);
     void setDisponibilidad(bool);
-    std::string getNombre();
-    std::string getDescripcion();
-    std::string getIdActivo();
+    void setDuenio(string);
+    void setTiempo(int);
+    string getNombre();
+    string getDescripcion();
+    string getIdActivo();
+    string getDuenio();
+    int getTiempo();
     bool getDisponibilidad();
     ~Activo();
 };

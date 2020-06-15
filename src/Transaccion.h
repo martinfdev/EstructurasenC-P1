@@ -12,24 +12,19 @@ class Transaccion
 {
 private:
     int tiempo_renta;//el tiempo de renta es en dias
-    string id_T, id_activo; 
-    string nombre_usuario, departamento, empresa, fecha_renta;   
+    string activo; 
+    string idT, nombre_usuarioR, departamento, empresa, fecha_renta;
+    string date();//retorna la fecha actual del sistema  
+    string getT(); 
 public:
     Transaccion();//sin parametros
-    Transaccion(string, string, string, string, string, string, int);
+    Transaccion(string, string, string, string, int);
     string getIdT();
     string getIdActivo();
     string getNombreUsuario();
     string getDepartamento();
     string getEmpresa();
-    string fecha();
     int getTiempo();
     ~Transaccion();
 };
-
-
-
-
-
-
 #endif /*TRANSACCION_H*/

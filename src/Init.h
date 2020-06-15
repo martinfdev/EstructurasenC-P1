@@ -14,6 +14,7 @@ class Init
 private:
     MatrizDispersa *matriz;
     ListaDoble<Transaccion*> *historialT;
+    ListaDoble<Activo*>* catalogo;
     Menu *menu;
 public:
     Init(/* args */);

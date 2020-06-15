@@ -17,6 +17,7 @@ Usuario::Usuario(){
 //constructor con parametros
 Usuario::Usuario(string nombre_, string password_):nombre(nombre_), password(password_){
     arbolAvl = new TAVL<Activo*, string>();
+    activo_rent = new ListaDoble<Activo*>();
 }
 
 //setters
@@ -34,6 +35,8 @@ string Usuario::getNombre(){return nombre;}
 string Usuario::getPassword(){return password;}
 
 TAVL<Activo*, string>* Usuario::getArbolAvl(){return arbolAvl;}
+
+ListaDoble<Activo*>* Usuario::getActivoRen(){return activo_rent;}
 
 Usuario::~Usuario()
 {

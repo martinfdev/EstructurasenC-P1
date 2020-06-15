@@ -19,6 +19,7 @@
 #include "MatrizDispersa.cpp"
 #include "MD5.cpp"
 #include "Menu.cpp"
+#include "Transaccion.cpp"
 
 using std::cout;
 using std::string;
@@ -27,13 +28,15 @@ Init::Init()
 {
   matriz = new MatrizDispersa();
   historialT = new ListaDoble<Transaccion *>();
-  start(); // metodo que incializa todo
+  catalogo = new ListaDoble<Activo*>();
+  //start(); // metodo que incializa todo
+  test();
 }
 
 //metodo donde se inicia el programa
 void Init::start()
 {
-  menu = new Menu(historialT, matriz);
+  menu = new Menu(historialT, matriz, catalogo);
   menu->menuIni();
 }
 
@@ -41,26 +44,22 @@ void Init::start()
 void Init::test()
 {
 
-  /* 
+   
     //prueba lista circular doble y grafico
-    ListaDoble<std::string> *ld = new ListaDoble<std::string>();
-    ld->insertarUltimoC("1");
-    ld->insertarUltimoC("2");
-    ld->insertarUltimoC("3");
-    ld->insertarUltimoC("4");
-    ld->insertarUltimoC("5");
-    ld->insertarUltimoC("6");
-    ld->insertarUltimoC("7");
-    ld->insertarUltimoC("8");
-    ld->insertarUltimoC("9");
-    ld->insertarUltimoC("10");
-    ld->insertarUltimoC("11");
-    ld->insertarUltimoC("12");
-    ld->insertarUltimoC("13");
+    string in;
+    ListaDoble<Transaccion*> *ld = new ListaDoble<Transaccion*>();
+    ld->insertarUltimoC(new Transaccion("adslfkjee2153lk", "pedro", "", "", 90));
+    cin>>in;
+    ld->insertarUltimoC(new Transaccion("asdfasdf9023890", "juan", "", "", 8));
+    cin>>in;
+    ld->insertarUltimoC(new Transaccion("s9823haslalndlk", "luis", "", "", 23));
+    cin>>in;
+    ld->insertarUltimoC(new Transaccion("lfkjeo83902897l", "Mario", "", "", 25));
+    cin>>in;
+    ld->insertarUltimoC(new Transaccion("asdjleio98278id", "Rebe", "", "", 234));
     //ld->reportStringC("listaCircular");
-    Reporte *rep = new Reporte();
-    rep->ReporteListaDobleCircular(ld, "listaDoblecircular");
-    */
+    Reporte().ReporteListaDobleCircular(ld, "RTransacciones");
+    
 
   /*Activo *ac = new Activo("Silla", "silla secretaria");
     cout << "Id Activo\t" << ac->getIdActivo() << endl;
@@ -166,5 +165,41 @@ void Init::test()
 
    md->report();
  */
+/*
+  catalogo->insertarUltimo(new Activo("mesa", "akdfhkajdf"));
+  catalogo->insertarUltimo(new Activo("silla", "akdfhkajdf"));
+  catalogo->insertarUltimo(new Activo("botellas", "akdfhkajdf"));
+  catalogo->insertarUltimo(new Activo("cristaleria", "akdfhkajdf"));
+  catalogo->insertarUltimo(new Activo("manteles", "akdfhkajdf"));
+  catalogo->insertarUltimo(new Activo("Activo1", "akdfhkajdf"));
+  catalogo->insertarUltimo(new Activo("Activo2", "akdfhkajdf"));
+  for (int i = 0; i < catalogo->getSize(); i++)
+  {
+    cout<<catalogo->getDataNext()->getNombre()<<"\n";
+  }
+  */
+
+  //Transaccion *t = new Transaccion(new Activo("silla", "asdfa", "pedro"), "Juan", "Huehue", "SA", 30);
+  /*TAVL<Activo*, string>* t = new TAVL<Activo*, string>();
+  Activo* a1 = new Activo("sillas", "askdfhjklas", "pedro");
+  Activo* a2 = new Activo("Mesas", "askdfhjklas", "pedro");
+  Activo* a3 = new Activo("Cristaleria", "askdfhjklas", "pedro");
+  Activo* a4 = new Activo("Manteles", "askdfhjklas", "pedro");
+  Activo* a5 = new Activo("Cubiertos", "askdfhjklas", "pedro");
+  Activo* a6 = new Activo("Activo1", "askdfhjklas", "pedro");
+  Activo* a7 = new Activo("Activo2", "askdfhjklas", "pedro");
+  Activo* a8 = new Activo("Activo3", "askdfhjklas", "pedro");
+  a8->setDisponibilidad(false);
+  t->insertar(a1, a1->getIdActivo());
+  t->insertar(a2, a2->getIdActivo());
+  t->insertar(a3, a3->getIdActivo());
+  t->insertar(a4, a4->getIdActivo());
+  t->insertar(a5, a5->getIdActivo());
+  t->insertar(a6, a6->getIdActivo());
+  t->insertar(a7, a7->getIdActivo());
+  t->insertar(a8, a8->getIdActivo());
+  
+  Reporte().reporteAVL(t->getRaiz());
+  */
 }
 Init::~Init() {}

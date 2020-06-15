@@ -177,7 +177,7 @@ T ListaDoble<T>::borrarNodo(Node<T> *n)
         ultimo->setNext(NULL);
         size--;
         delete tempN;
-        return tempData();
+        return tempData;
     }
     else
     {

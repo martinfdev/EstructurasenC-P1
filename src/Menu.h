@@ -19,18 +19,21 @@ class Menu
 {
 private:
     ListaDoble<Transaccion *> *historialT;
+    ListaDoble<Activo*>* catalogo;
     MatrizDispersa *matriz;
     void login();
     void menuAdmin();
-    void menuUsuario(Usuario *);
+    void menuUsuario(Usuario *, string, string);
     void crearUsuario();
-    void crearActivo(TAVL<Activo *, string> *);
+    void crearActivo(TAVL<Activo *, string> *, string);
     void eliminarActivo(TAVL<Activo *, string> *);
     void modificarActivo(TAVL<Activo*, string>*);
     void modificandoActivo(Activo*);
-
+    void catalogoActivo();
+    void rentaActivo(Usuario*, string, string);
+    void rentandoActivo(Usuario*, string, string);
 public:
-    Menu(ListaDoble<Transaccion *> *, MatrizDispersa *);
+    Menu(ListaDoble<Transaccion *> *, MatrizDispersa *, ListaDoble<Activo*> *);
     void menuIni(); //menu de inicio de sesion
     ~Menu();
 };
