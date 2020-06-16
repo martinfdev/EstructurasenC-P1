@@ -7,7 +7,7 @@
 #include "Menu.h"
 #include "Reporte.h"
 
-Menu::Menu(ListaDoble<Transaccion *> *historialT_, MatrizDispersa *matriz_, ListaDoble<Activo *> *catalago_) : historialT(historialT_), matriz(matriz_), catalogo(catalago_)
+Menu::Menu(ListaDoble<Transaccion *> *historialT_, MatrizDispersa *matriz_, Lista<Usuario *> *catalago_) : historialT(historialT_), matriz(matriz_), catalogo(catalago_)
 {
 }
 
@@ -130,7 +130,7 @@ void Menu::menuAdmin()
         case 5:
             system("clear");
             if (historialT->getSize() > 0)
-                Reporte().ReporteListaDobleCircular(historialT, "RTransacciones");           
+                Reporte().ReporteListaDobleCircular(historialT, "RTransacciones");
             break;
         case 6:
             system("clear");
@@ -157,8 +157,6 @@ void Menu::menuUsuario(Usuario *usuario, string departamento_, string empresa_)
     system("clear");
     int option;
     string opEr;
-    // if (usuario)
-    //     TAVL<Activo *, string> *avl = usuario->getArbolAvl();
     do
     {
         cout << "|======================+MENU USUARIO+========================|\n";
@@ -168,7 +166,7 @@ void Menu::menuUsuario(Usuario *usuario, string departamento_, string empresa_)
         cout << "|\t*4.  Rentar Activo*\t\t\t             |\n";
         cout << "|\t*5.  Activos Rentados*\t\t\t             |\n";
         cout << "|\t*6.  Mis Activos Rentados*\t\t             |\n";
-        cout << "|\t*7.  Visualizar Arbol*\t\t\t            |\n";
+        cout << "|\t*7.  Visualizar Arbol*\t\t\t             |\n";
         cout << "|\t*8.  Cerrar Sesion*\t\t\t             |\n";
         cout << "|____________________________________________________________|\n";
         if (usuario)
@@ -203,11 +201,13 @@ void Menu::menuUsuario(Usuario *usuario, string departamento_, string empresa_)
             break;
         case 5:
             system("clear");
-
+            activosRentados(usuario, departamento_, empresa_);
+            system("clear");
             break;
         case 6:
             system("clear");
-
+            misActivosRentados(usuario);
+            system("clear");
             break;
         case 7:
             system("clear");
@@ -242,7 +242,9 @@ void Menu::crearUsuario()
     getline(cin, empresa);
     if (nombre != "" && password != "" && departamento != "" && empresa != "")
     {
-        matriz->insertMatrix(departamento, empresa, new Usuario(nombre, password));
+        Usuario *n_usuario = new Usuario(nombre, password);
+        matriz->insertMatrix(departamento, empresa, n_usuario);
+        catalogo->add_endS(n_usuario);
         cout << "\n\nUsuario " << nombre << " creado con exito!\n\n Pulse cualquier tecla y Enter!  ";
         string t;
         cin >> t;
@@ -274,7 +276,6 @@ void Menu::crearActivo(TAVL<Activo *, string> *avl, string usu)
     if (nombre != "" && descripcion != "")
     {
         Activo *newA = new Activo(nombre, descripcion, usu);
-        catalogo->insertarUltimo(newA);
         avl->insertar(newA, newA->getIdActivo());
         cout << "Activo Creado!!\n";
     }
@@ -373,12 +374,8 @@ void Menu::rentaActivo(Usuario *usuario, string departamento, string empresa)
         cout << "|\t*2.  Regresar *\t\t\t\t\t   |\n";
         cout << "|___________________CATALOGO DE ACTIVOS____________________|\n";
         cout << "\n";
-        if (catalogo->getSize() > 0)
-            for (size_t i = 0; i < catalogo->getSize(); i++)
-            {
-                Activo *tmp = catalogo->getDataNext();
-                cout << "ID: " << tmp->getIdActivo() << ";\t Nombre: " << tmp->getNombre() << ";\t\t Tiempor de Renta: " << tmp->getTiempo() << "\n";
-            }
+        //llamamos el mentodo de la clase reporte para imprimir el catalogo
+        Reporte().printCatalogoActivos(catalogo);
         cout << "Ingrese Opcion: ";
         cin >> entrada;
         option = atoi(entrada.c_str());
@@ -395,41 +392,102 @@ void Menu::rentaActivo(Usuario *usuario, string departamento, string empresa)
 }
 
 //submenu rentando
-void Menu::rentandoActivo(Usuario *usuario, string deparatamento, string empresa)
+void Menu::rentandoActivo(Usuario *usuario, string departamento, string empresa)
 {
-    Activo *ren = 0;
+    Activo *dev = 0;
     string id;
     cout << "|=====================+RENTA ACTIVO+=======================|\n\n";
     cout << "Ingresar ID de Activo a Rentar: ";
     getline(cin, id);
     getline(cin, id);
-    if (catalogo->getSize() > 0)
-    {
-        for (size_t i = 0; i < catalogo->getSize(); i++)
-        {
-            Activo *tmp = catalogo->getDataNext();
-            if (tmp->getIdActivo() == id)
-                ren = tmp;
-        }
-    }
-    if (ren)
+    dev = Reporte().getActivoRenta(catalogo, id);
+    if (dev)
     {
         cout << "Activo a Rentar\n";
-        cout << "ID: " << ren->getIdActivo() << "\tNombre: " << ren->getNombre() << "\tDescripcion: " << ren->getDescripcion() << "\n\n";
+        cout << "ID: " << dev->getIdActivo() << "\tNombre: " << dev->getNombre() << "\tDescripcion: " << dev->getDescripcion() << "\n\n";
         string temporal;
-        int dia_renta;
+        int dia_renta = 0;
         cout << "Ingresar dias por rentar: ";
         getline(cin, temporal);
         dia_renta = atoi(temporal.c_str());
         if (dia_renta > 0)
         {
-            ren->setTiempo(dia_renta);
-            ren->setDisponibilidad(false);
-            usuario->getActivoRen()->insertarPrimero(ren);
-            catalogo->borrarParametro(ren);
-            historialT->insertarUltimoC(new Transaccion(ren->getIdActivo(), usuario->getNombre(), deparatamento, empresa, dia_renta));
+            dev->setTiempo(dia_renta);
+            dev->setDisponibilidad(false);
+            usuario->getActivoRen()->insertarUltimo(dev);
+            historialT->insertarUltimoC(new Transaccion(dev->getIdActivo(), usuario->getNombre(), departamento, empresa, dia_renta));
         }
     }
+    system("clear");
+}
+
+//activos rentados lista
+void Menu::activosRentados(Usuario *usuario, string departamento, string empresa)
+{
+    int option;
+    string entrada;
+    do
+    {
+        cout << "|=====================+ACTIVOS RENTADOS+=======================|\n";
+        cout << "|\t*1.  Registrar Devolucion*\t\t\t       |\n";
+        cout << "|\t*2.  Regresar *\t\t\t\t\t       |\n";
+        cout << "|______________________________________________________________|\n";
+        cout << "\n";
+        //llamamos el mentodo de la clase reporte para imprimir el catalogo
+        ListaDoble<Activo *> *lar = usuario->getActivoRen();
+        for (size_t i = 0; i < lar->getSize(); i++)
+        {
+            Activo *tmpa = lar->getDataNext();
+            if (tmpa)
+                cout << "ID: " << tmpa->getIdActivo() << ";\t Nombre: " << tmpa->getNombre() << ";\t\t Tiempor de Renta: " << tmpa->getTiempo() << "\n";
+        }
+        cout << "Ingrese Opcion: ";
+        cin >> entrada;
+        option = atoi(entrada.c_str());
+        switch (option)
+        {
+        case 1:
+            devolverActivo(usuario);
+            break;
+        default:
+            system("clear");
+            break;
+        }
+    } while (option != 2);
+}
+
+//submenu delvolviendo los activos rentados
+void Menu::devolverActivo(Usuario *usuario)
+{
+    Activo *dev = 0;
+    string id;
+    cout << "|=====================+DEVOLVER ACTIVO+======================|\n\n";
+    cout << "Ingresar ID de Activo a devolver: ";
+    getline(cin, id);
+    getline(cin, id);
+    dev = Reporte().getActivoRenta(catalogo, id);
+    if (dev)
+    {
+        cout << "Activo devuelto: \n";
+        cout << "ID: " << dev->getIdActivo() << "\tNombre: " << dev->getNombre() << "\t\tDescripcion: " << dev->getDescripcion() << "\n\n";
+        usuario->getActivoRen()->borrarParametro(dev);
+        dev->setDisponibilidad(true);
+        dev->setTiempo(0);
+    }
+    system("clear");
+}
+
+//menu que muestra los activos de un usuario rentados
+void Menu::misActivosRentados(Usuario *usuario)
+{
+    cout << "|===============+MIS ACTIVOS RENTADOS+=================|\n";
+    cout << "|______________________________________________________|\n";
+    cout << "\n\n";
+    Reporte().printMisActivosRentados(usuario->getArbolAvl()->getRaiz());
+    cout << "\nPulse cualquier tecla y enter para salir: ";
+    string salir;
+    cin>>salir;
+    system("clear");
 }
 
 //destructor

@@ -54,6 +54,8 @@ string Transaccion::getDepartamento(){return departamento;}
 
 string Transaccion::getEmpresa(){return empresa;}
 
+string Transaccion::getFecha(){return fecha_renta; }
+
 int Transaccion::getTiempo(){return tiempo_renta;}
 
 //destructor

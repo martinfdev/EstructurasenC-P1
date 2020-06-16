@@ -7,6 +7,7 @@
 #include "MatrizDispersa.h"
 #include "Transaccion.h"
 #include "ListaDoble.h"
+#include "Lista.h"
 #include "Menu.h"
 
 class Init
@@ -14,7 +15,7 @@ class Init
 private:
     MatrizDispersa *matriz;
     ListaDoble<Transaccion*> *historialT;
-    ListaDoble<Activo*>* catalogo;
+    Lista<Usuario*>* catalogo;
     Menu *menu;
 public:
     Init(/* args */);

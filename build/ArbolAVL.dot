@@ -1,30 +1,30 @@
 digraph G {
 node[fontname="Arial", color="blue"]
 edge [color="green"]
-E -> B;
-B -> A;
+"8a8bb7cd343aa2a"[label="8a8bb7cd343aa2a\na1\nDisponible = si"];
+"8a8bb7cd343aa2a" -> "693a9fdd4c2fd07";
+"693a9fdd4c2fd07"[label="693a9fdd4c2fd07\na2\nDisponible = si"];
+"693a9fdd4c2fd07" -> "32cfe6c19200b67";
+"32cfe6c19200b67"[label="32cfe6c19200b67\na5\nDisponible = si"]
 null0 [shape=point];
-A-> null0;
+"32cfe6c19200b67" -> null0;
 null1 [shape=point];
-A -> null1;
-B -> C
+"32cfe6c19200b67" -> null1;
+"693a9fdd4c2fd07" -> "894f782a148b33a";
+"894f782a148b33a"[label="894f782a148b33a\na4\nDisponible = si"]
 null2 [shape=point];
-C-> null2;
+"894f782a148b33a" -> null2;
 null3 [shape=point];
-C -> null3;
-E -> G
-G -> F;
+"894f782a148b33a" -> null3;
+"8a8bb7cd343aa2a" -> "9d607a663f3e9b0";
+"9d607a663f3e9b0"[label="9d607a663f3e9b0\na3\nDisponible = si"]
 null4 [shape=point];
-F-> null4;
+"9d607a663f3e9b0" -> null4;
+"9d607a663f3e9b0" -> "f74dd50cfec0f85";
+"f74dd50cfec0f85"[label="f74dd50cfec0f85\na6\nDisponible = si"]
 null5 [shape=point];
-F -> null5;
-G -> H
+"f74dd50cfec0f85" -> null5;
 null6 [shape=point];
-H-> null6;
-H -> Z
-null7 [shape=point];
-Z-> null7;
-null8 [shape=point];
-Z -> null8;
+"f74dd50cfec0f85" -> null6;
 }
 

@@ -6,6 +6,7 @@
 */
 #include "Reporte.h"
 #include "TAVL.h"
+#include "Usuario.h"
 #include <string>
 
 using std::string;
@@ -15,7 +16,7 @@ Reporte::Reporte()
 }
 
 //reporte de lista doblemente circular
-void Reporte::ReporteListaDobleCircular(ListaDoble<Transaccion* > *lista_circular, string nameDot)
+void Reporte::ReporteListaDobleCircular(ListaDoble<Transaccion *> *lista_circular, string nameDot)
 {
     Graphviz *graph = new Graphviz();
     graph->addln(graph->start_graph());
@@ -23,22 +24,22 @@ void Reporte::ReporteListaDobleCircular(ListaDoble<Transaccion* > *lista_circula
     graph->addln("node [shape=record, color=blue, width=0.5, height=0.5]; ");
     graph->addln();
     int contador = 0, size = lista_circular->getSize();
-    Node<Transaccion*> *primero = lista_circular->getPrimero();
+    Node<Transaccion *> *primero = lista_circular->getPrimero();
     string nodos, enlaces, enlacesIverso;
     if (lista_circular != 0)
     {
-        Node<Transaccion*> *aux = primero;
+        Node<Transaccion *> *aux = primero;
         do
         {
             if (contador < size - 1)
             {
-                nodos = nodos + "node" + to_string(contador) + " [label=\"{<a>|" + aux->getData()->getIdT() + "|<b>}\"];\n";
+                nodos = nodos + "node" + to_string(contador) + " [label=\"{<a>|ID T: " + aux->getData()->getIdT() + "\\nID A: " + aux->getData()->getIdActivo() + "\\nUsuario: " + aux->getData()->getNombreUsuario() + "\\nTiempo: " + to_string(aux->getData()->getTiempo()) + " dias|<b>}\"];\n";
                 enlaces = enlaces + "node" + to_string(contador) + ":b:c -> node" + to_string(contador + 1) + ":a:c [arrowtail=dot, dir=both,tailclip=false];\n";
                 enlacesIverso = enlacesIverso + "node" + to_string(contador + 1) + ":a:c -> node" + to_string(contador) + ":b:c [arrowtail=dot, dir=both,tailclip=false];\n";
             }
             else
             {
-                nodos = nodos + "node" + to_string(contador) + " [label=\"{<a>|" + aux->getData()->getIdT() + "|<b>}\"];\n";
+                nodos = nodos + "node" + to_string(contador) + " [label=\"{<a>|ID T: " + aux->getData()->getIdT() + "\\nID A: " + aux->getData()->getIdActivo() + "\\nUsuario: " + aux->getData()->getNombreUsuario() + "\\nTiempo: " + to_string(aux->getData()->getTiempo()) + " dias|<b>}\"];\n";
                 enlaces = enlaces + "node" + to_string(contador) + ":b:c -> node" + to_string(0) + ":a:c [arrowtail=dot, dir=both,tailclip=false];\n";
                 enlacesIverso = enlacesIverso + "node" + to_string(0) + ":a:c -> node" + to_string(contador) + ":b:c [arrowtail=dot, dir=both,tailclip=false];\n";
             }
@@ -62,26 +63,26 @@ void Reporte::reporteArbolAvl(NodeAvl<Activo *, string> *raiz, Graphviz *graph)
     {
         if (raiz->getIzquierda())
         {
-            graph->add(("\""+raiz->getLlave()) + "\"[label=\"" + raiz->getDato()->getIdActivo() + "\\n" + raiz->getDato()->getNombre() + "\\nDisponible = " + getDisponible(raiz->getDato()->getDisponibilidad()) + "\"];\n");
-            graph->addln("\""+(raiz->getLlave()) + "\" -> \"" + (raiz->getIzquierda()->getLlave()) + "\";");
+            graph->add(("\"" + raiz->getLlave()) + "\"[label=\"" + raiz->getDato()->getIdActivo() + "\\n" + raiz->getDato()->getNombre() + "\\nDisponible = " + getDisponible(raiz->getDato()->getDisponibilidad()) + "\"];\n");
+            graph->addln("\"" + (raiz->getLlave()) + "\" -> \"" + (raiz->getIzquierda()->getLlave()) + "\";");
             reporteArbolAvl(raiz->getIzquierda(), graph);
         }
         else
         {
-            graph->add(("\""+raiz->getLlave()) + "\"[label=\"" + raiz->getDato()->getIdActivo() + "\\n" + raiz->getDato()->getNombre() + "\\nDisponible = " + getDisponible(raiz->getDato()->getDisponibilidad()) + "\"]\n");
+            graph->add(("\"" + raiz->getLlave()) + "\"[label=\"" + raiz->getDato()->getIdActivo() + "\\n" + raiz->getDato()->getNombre() + "\\nDisponible = " + getDisponible(raiz->getDato()->getDisponibilidad()) + "\"]\n");
             graph->addln("null" + to_string(count) + " [shape=point];");
-            graph->addln(("\""+raiz->getLlave()) + "\" -> null" + to_string(count) + ";");
+            graph->addln(("\"" + raiz->getLlave()) + "\" -> null" + to_string(count) + ";");
             count++;
         }
         if (raiz->getDerecha())
         {
-            graph->addln(("\""+raiz->getLlave()) + "\" -> \"" + (raiz->getDerecha()->getLlave())+"\";");
+            graph->addln(("\"" + raiz->getLlave()) + "\" -> \"" + (raiz->getDerecha()->getLlave()) + "\";");
             reporteArbolAvl(raiz->getDerecha(), graph);
         }
         else
         {
             graph->addln("null" + to_string(count) + " [shape=point];");
-            graph->addln(("\""+raiz->getLlave()) + "\" -> null" + to_string(count) + ";");
+            graph->addln(("\"" + raiz->getLlave()) + "\" -> null" + to_string(count) + ";");
             count++;
         }
     }
@@ -130,6 +131,55 @@ void Reporte::preorden(NodeAvl<Activo *, string> *root)
         preorden(root->getDerecha());
     }
 }
+
+//metodo que me imprime el catalogo de activos recibe como parametro una lista de usuarios
+void Reporte::printCatalogoActivos(Lista<Usuario *> *listCatalogo)
+{
+    for (size_t i = 0; i < listCatalogo->size(); i++)
+    {
+        Usuario *tmpus = listCatalogo->getData();
+        printCatalgo(tmpus->getArbolAvl()->getRaiz());
+    }
+}
+
+//metodo privado donde se imprime el catologo de los disponibles de acada usuario
+void Reporte::printCatalgo(NodeAvl<Activo *, string> *root)
+{
+    if (root)
+    {
+        if (root->getDato()->getDisponibilidad())
+            cout << "ID: " << root->getLlave() << ";\t Nombre: " << root->getDato()->getNombre() << ";\t\t Tiempo de Renta: " << root->getDato()->getTiempo() << "\n";
+        printCatalgo(root->getIzquierda());
+        printCatalgo(root->getDerecha());
+    }
+}
+
+//metodo que devuelve un activo con el id espesificado
+Activo *Reporte::getActivoRenta(Lista<Usuario *> *listU, string id)
+{
+    for (size_t i = 0; i < listU->size(); i++)
+    {
+        Usuario *utmp = listU->getData();
+        NodeAvl<Activo *, string> *ntmp = utmp->getArbolAvl()->buscar(id);
+        if (ntmp)
+            return ntmp->getDato();
+    }
+    return nullptr;
+}
+
+//metodo que imprime los activos rentados de un usuario
+void Reporte::printMisActivosRentados(NodeAvl<Activo *, string> *root)
+{
+    if (root)
+    {
+        if (!root->getDato()->getDisponibilidad())
+            cout << "ID: " << root->getLlave() << ";\t Nombre: " << root->getDato()->getNombre() << ";\t\t Tiempo de Renta: " << root->getDato()->getTiempo() << "\n";
+        printMisActivosRentados(root->getIzquierda());
+        printMisActivosRentados(root->getDerecha());
+    }
+}
+
+//destructor
 Reporte::~Reporte()
 {
 }

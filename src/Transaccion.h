@@ -24,6 +24,7 @@ public:
     string getNombreUsuario();
     string getDepartamento();
     string getEmpresa();
+    string getFecha();
     int getTiempo();
     ~Transaccion();
 };

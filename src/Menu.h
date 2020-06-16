@@ -11,6 +11,7 @@
 #include "ListaDoble.h"
 #include "Transaccion.h"
 #include "MatrizDispersa.h"
+#include "Lista.h"
 #include "TAVL.h"
 
 using std::string;
@@ -19,7 +20,7 @@ class Menu
 {
 private:
     ListaDoble<Transaccion *> *historialT;
-    ListaDoble<Activo*>* catalogo;
+    Lista<Usuario*>* catalogo;
     MatrizDispersa *matriz;
     void login();
     void menuAdmin();
@@ -32,8 +33,12 @@ private:
     void catalogoActivo();
     void rentaActivo(Usuario*, string, string);
     void rentandoActivo(Usuario*, string, string);
+    void activosRentados(Usuario*, string, string);
+    void devolverActivo(Usuario*);
+    void misActivosRentados(Usuario*);
+
 public:
-    Menu(ListaDoble<Transaccion *> *, MatrizDispersa *, ListaDoble<Activo*> *);
+    Menu(ListaDoble<Transaccion *> *, MatrizDispersa *, Lista<Usuario*> *);
     void menuIni(); //menu de inicio de sesion
     ~Menu();
 };

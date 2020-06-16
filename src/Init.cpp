@@ -28,9 +28,9 @@ Init::Init()
 {
   matriz = new MatrizDispersa();
   historialT = new ListaDoble<Transaccion *>();
-  catalogo = new ListaDoble<Activo*>();
-  //start(); // metodo que incializa todo
-  test();
+  catalogo = new Lista<Usuario *>();
+  start(); // metodo que incializa todo
+  //test();
 }
 
 //metodo donde se inicia el programa
@@ -43,9 +43,7 @@ void Init::start()
 //metodo para hacer pruebas de funcionalidad
 void Init::test()
 {
-
-   
-    //prueba lista circular doble y grafico
+  /*  //prueba lista circular doble y grafico
     string in;
     ListaDoble<Transaccion*> *ld = new ListaDoble<Transaccion*>();
     ld->insertarUltimoC(new Transaccion("adslfkjee2153lk", "pedro", "", "", 90));
@@ -59,7 +57,7 @@ void Init::test()
     ld->insertarUltimoC(new Transaccion("asdjleio98278id", "Rebe", "", "", 234));
     //ld->reportStringC("listaCircular");
     Reporte().ReporteListaDobleCircular(ld, "RTransacciones");
-    
+  */
 
   /*Activo *ac = new Activo("Silla", "silla secretaria");
     cout << "Id Activo\t" << ac->getIdActivo() << endl;
@@ -165,7 +163,7 @@ void Init::test()
 
    md->report();
  */
-/*
+  /*
   catalogo->insertarUltimo(new Activo("mesa", "akdfhkajdf"));
   catalogo->insertarUltimo(new Activo("silla", "akdfhkajdf"));
   catalogo->insertarUltimo(new Activo("botellas", "akdfhkajdf"));
