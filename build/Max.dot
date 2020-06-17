@@ -1,0 +1,58 @@
+digraph G {
+label="Empresa: Max";
+	subgraph cluster_0 {
+	node[fontname="Arial", color="blue"];
+	edge [color="green"];
+"8a8bb7cd343aa2a"[label="8a8bb7cd343aa2a\na1\nDisponible = no"];
+"8a8bb7cd343aa2a" -> "693a9fdd4c2fd07";
+"693a9fdd4c2fd07"[label="693a9fdd4c2fd07\na2\nDisponible = no"];
+"693a9fdd4c2fd07" -> "32cfe6c19200b67";
+"32cfe6c19200b67"[label="32cfe6c19200b67\na5\nDisponible = no"]
+null60 [shape=point];
+"32cfe6c19200b67" -> null60;
+null61 [shape=point];
+"32cfe6c19200b67" -> null61;
+"693a9fdd4c2fd07" -> "894f782a148b33a";
+"894f782a148b33a"[label="894f782a148b33a\na4\nDisponible = no"]
+null62 [shape=point];
+"894f782a148b33a" -> null62;
+null63 [shape=point];
+"894f782a148b33a" -> null63;
+"8a8bb7cd343aa2a" -> "9d607a663f3e9b0";
+"9d607a663f3e9b0"[label="9d607a663f3e9b0\na3\nDisponible = no"]
+null64 [shape=point];
+"9d607a663f3e9b0" -> null64;
+null65 [shape=point];
+"9d607a663f3e9b0" -> null65;
+	label = "Usuario: Pedro";
+	 color=blue
+	}
+	subgraph cluster_1 {
+	node[fontname="Arial", color="blue"];
+	edge [color="green"];
+"abef17166794013"[label="abef17166794013\nactivo21\nDisponible = si"];
+"abef17166794013" -> "9a629713d477dfc";
+"9a629713d477dfc"[label="9a629713d477dfc\nactivo 25\nDisponible = si"];
+"9a629713d477dfc" -> "723191589efe1fb";
+"723191589efe1fb"[label="723191589efe1fb\nactivo24\nDisponible = si"]
+null66 [shape=point];
+"723191589efe1fb" -> null66;
+null67 [shape=point];
+"723191589efe1fb" -> null67;
+"9a629713d477dfc" -> "9bf3625fbbf1420";
+"9bf3625fbbf1420"[label="9bf3625fbbf1420\nactivo23\nDisponible = si"]
+null68 [shape=point];
+"9bf3625fbbf1420" -> null68;
+null69 [shape=point];
+"9bf3625fbbf1420" -> null69;
+"abef17166794013" -> "fa723952e021216";
+"fa723952e021216"[label="fa723952e021216\nactivo22\nDisponible = si"]
+null70 [shape=point];
+"fa723952e021216" -> null70;
+null71 [shape=point];
+"fa723952e021216" -> null71;
+	label = "Usuario: Mester";
+	 color=blue
+	}
+}
+

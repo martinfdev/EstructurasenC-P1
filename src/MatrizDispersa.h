@@ -17,8 +17,8 @@ private:
     NodeM* search_Row_Column(NodeM *, string);
     void insertSortRow(NodeM*, string);
     void insertSortColumn(NodeM*, string);
-    void show(NodeM*);
-    void insertNode(NodeM*, NodeM*, NodeM*);
+    NodeM* getXY(NodeM*, string);
+    bool insertNode(NodeM*, NodeM*, NodeM*);
     NodeM* lastNodeColumn(NodeM*);
     NodeM* lastNodeRow(NodeM*);
     NodeM* NodeColumnMed(NodeM*, string);
@@ -29,12 +29,12 @@ private:
     NodeM *recorridoProfundidad(NodeM*);
 public:
     MatrizDispersa();
-    void insertMatrix(string, string, Usuario*);
+    bool insertMatrix(string, string, Usuario*);
     bool isEmpty();
     int getSizeX();
     int getSizeY();  
-    void showY();
-    void showX();
+    NodeM* getY(string);
+    NodeM* getX(string);
     void showMatrix();
     void report();
     Usuario* searchM(string, string);

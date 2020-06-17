@@ -1,0 +1,58 @@
+digraph G {
+label="Departartamento: Huehue";
+	subgraph cluster_0 {
+	node[fontname="Arial", color="blue"];
+	edge [color="green"];
+"6edf7e1817f9c98"[label="6edf7e1817f9c98\nactivo8\nDisponible = si"];
+"6edf7e1817f9c98" -> "31620949741bfed";
+"31620949741bfed"[label="31620949741bfed\nactivo7\nDisponible = si"];
+"31620949741bfed" -> "2867d2c278cc1e7";
+"2867d2c278cc1e7"[label="2867d2c278cc1e7\nactivo9\nDisponible = si"]
+null18 [shape=point];
+"2867d2c278cc1e7" -> null18;
+null19 [shape=point];
+"2867d2c278cc1e7" -> null19;
+null20 [shape=point];
+"31620949741bfed" -> null20;
+"6edf7e1817f9c98" -> "ed9296a7572dd4e";
+"ed9296a7572dd4e"[label="ed9296a7572dd4e\nactivo6\nDisponible = si"];
+"ed9296a7572dd4e" -> "a6a8516066c8ef0";
+"a6a8516066c8ef0"[label="a6a8516066c8ef0\nactivo10\nDisponible = si"]
+null21 [shape=point];
+"a6a8516066c8ef0" -> null21;
+null22 [shape=point];
+"a6a8516066c8ef0" -> null22;
+null23 [shape=point];
+"ed9296a7572dd4e" -> null23;
+	label = "Usuario: Mary";
+	color=blue
+	}
+	subgraph cluster_1 {
+	node[fontname="Arial", color="blue"];
+	edge [color="green"];
+"b1f1caf751aa430"[label="b1f1caf751aa430\nactivo17\nDisponible = si"];
+"b1f1caf751aa430" -> "686d2f974b2b724";
+"686d2f974b2b724"[label="686d2f974b2b724\nactivo18\nDisponible = si"];
+"686d2f974b2b724" -> "565a2b2440cd15a";
+"565a2b2440cd15a"[label="565a2b2440cd15a\nactivo19\nDisponible = si"]
+null24 [shape=point];
+"565a2b2440cd15a" -> null24;
+null25 [shape=point];
+"565a2b2440cd15a" -> null25;
+"686d2f974b2b724" -> "9278f7f56fe0988";
+"9278f7f56fe0988"[label="9278f7f56fe0988\nactivo20\nDisponible = si"]
+null26 [shape=point];
+"9278f7f56fe0988" -> null26;
+null27 [shape=point];
+"9278f7f56fe0988" -> null27;
+"b1f1caf751aa430" -> "c05f7709393090f";
+"c05f7709393090f"[label="c05f7709393090f\nactivo16\nDisponible = si"]
+null28 [shape=point];
+"c05f7709393090f" -> null28;
+null29 [shape=point];
+"c05f7709393090f" -> null29;
+	label = "Usuario: Aracely";
+	color=blue
+	}
+}
+

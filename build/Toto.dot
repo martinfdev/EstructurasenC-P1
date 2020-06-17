@@ -1,26 +1,31 @@
 digraph G {
-node[fontname="Arial", color="blue"]
-edge [color="green"]
+label="Departartamento: Toto";
+	subgraph cluster_0 {
+	node[fontname="Arial", color="blue"];
+	edge [color="green"];
 "abef17166794013"[label="abef17166794013\nactivo21\nDisponible = si"];
 "abef17166794013" -> "9a629713d477dfc";
 "9a629713d477dfc"[label="9a629713d477dfc\nactivo 25\nDisponible = si"];
 "9a629713d477dfc" -> "723191589efe1fb";
 "723191589efe1fb"[label="723191589efe1fb\nactivo24\nDisponible = si"]
-null36 [shape=point];
-"723191589efe1fb" -> null36;
-null37 [shape=point];
-"723191589efe1fb" -> null37;
+null54 [shape=point];
+"723191589efe1fb" -> null54;
+null55 [shape=point];
+"723191589efe1fb" -> null55;
 "9a629713d477dfc" -> "9bf3625fbbf1420";
 "9bf3625fbbf1420"[label="9bf3625fbbf1420\nactivo23\nDisponible = si"]
-null38 [shape=point];
-"9bf3625fbbf1420" -> null38;
-null39 [shape=point];
-"9bf3625fbbf1420" -> null39;
+null56 [shape=point];
+"9bf3625fbbf1420" -> null56;
+null57 [shape=point];
+"9bf3625fbbf1420" -> null57;
 "abef17166794013" -> "fa723952e021216";
 "fa723952e021216"[label="fa723952e021216\nactivo22\nDisponible = si"]
-null40 [shape=point];
-"fa723952e021216" -> null40;
-null41 [shape=point];
-"fa723952e021216" -> null41;
+null58 [shape=point];
+"fa723952e021216" -> null58;
+null59 [shape=point];
+"fa723952e021216" -> null59;
+	label = "Usuario: Mester";
+	color=blue
+	}
 }
 

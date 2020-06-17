@@ -2,23 +2,26 @@ digraph G {
 rankdir=LR;
 node [shape=record, color=blue, width=0.5, height=0.5]; 
 
-node0 [label="{<a>|ID T: 5734079b82c64e2\nID A: 8a8bb7cd343aa2a\nUsuario: j\nTiempo: 12 dias|<b>}"];
-node1 [label="{<a>|ID T: 633371ffb8cc45e\nID A: 894f782a148b33a\nUsuario: j\nTiempo: 30 dias|<b>}"];
-node2 [label="{<a>|ID T: cf92989ef2ed6fd\nID A: 32cfe6c19200b67\nUsuario: j\nTiempo: 11 dias|<b>}"];
-node3 [label="{<a>|ID T: 143259550efb7fa\nID A: 48881d728a96516\nUsuario: p\nTiempo: 45 dias|<b>}"];
-node4 [label="{<a>|ID T: 615b19661311e56\nID A: 2169184650ee320\nUsuario: p\nTiempo: 56 dias|<b>}"];
+node0 [label="{<a>|ID T: f7ad10a69a74616\nID A: 8a8bb7cd343aa2a\nUsuario: Mester\nTiempo: 23 dias|<b>}"];
+node1 [label="{<a>|ID T: d4c9afe7fb20c83\nID A: 693a9fdd4c2fd07\nUsuario: Mester\nTiempo: 60 dias|<b>}"];
+node2 [label="{<a>|ID T: fc337a64a27bbf0\nID A: 31620949741bfed\nUsuario: Aracely\nTiempo: 10 dias|<b>}"];
+node3 [label="{<a>|ID T: e0e3c1134f0c0e8\nID A: 32cfe6c19200b67\nUsuario: Aracely\nTiempo: 2 dias|<b>}"];
+node4 [label="{<a>|ID T: 348505bb9cd5594\nID A: 894f782a148b33a\nUsuario: Aracely\nTiempo: 23 dias|<b>}"];
+node5 [label="{<a>|ID T: d9bd19389be8ee8\nID A: 9d607a663f3e9b0\nUsuario: Aracely\nTiempo: 45 dias|<b>}"];
 
 node0:b:c -> node1:a:c [arrowtail=dot, dir=both,tailclip=false];
 node1:b:c -> node2:a:c [arrowtail=dot, dir=both,tailclip=false];
 node2:b:c -> node3:a:c [arrowtail=dot, dir=both,tailclip=false];
 node3:b:c -> node4:a:c [arrowtail=dot, dir=both,tailclip=false];
-node4:b:c -> node0:a:c [arrowtail=dot, dir=both,tailclip=false];
+node4:b:c -> node5:a:c [arrowtail=dot, dir=both,tailclip=false];
+node5:b:c -> node0:a:c [arrowtail=dot, dir=both,tailclip=false];
 
 node1:a:c -> node0:b:c [arrowtail=dot, dir=both,tailclip=false];
 node2:a:c -> node1:b:c [arrowtail=dot, dir=both,tailclip=false];
 node3:a:c -> node2:b:c [arrowtail=dot, dir=both,tailclip=false];
 node4:a:c -> node3:b:c [arrowtail=dot, dir=both,tailclip=false];
-node0:a:c -> node4:b:c [arrowtail=dot, dir=both,tailclip=false];
+node5:a:c -> node4:b:c [arrowtail=dot, dir=both,tailclip=false];
+node0:a:c -> node5:b:c [arrowtail=dot, dir=both,tailclip=false];
 
 }
 

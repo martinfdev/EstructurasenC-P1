@@ -1,0 +1,10 @@
+digraph G {
+label="Departartamento: Guatemala";
+	subgraph cluster_0 {
+	node[fontname="Arial", color="blue"];
+	edge [color="green"];
+	label = "Usuario: pedro";
+	color=blue
+	}
+}
+

@@ -133,12 +133,13 @@ void Reporte::preorden(NodeAvl<Activo *, string> *root)
 }
 
 //metodo que me imprime el catalogo de activos recibe como parametro una lista de usuarios
-void Reporte::printCatalogoActivos(Lista<Usuario *> *listCatalogo)
+void Reporte::printCatalogoActivos(Lista<Usuario *> *listCatalogo, Usuario *usuario)
 {
     for (size_t i = 0; i < listCatalogo->size(); i++)
     {
         Usuario *tmpus = listCatalogo->getData();
-        printCatalgo(tmpus->getArbolAvl()->getRaiz());
+        if (tmpus != usuario)
+            printCatalgo(tmpus->getArbolAvl()->getRaiz());
     }
 }
 
@@ -177,6 +178,69 @@ void Reporte::printMisActivosRentados(NodeAvl<Activo *, string> *root)
         printMisActivosRentados(root->getIzquierda());
         printMisActivosRentados(root->getDerecha());
     }
+}
+
+//genera el reporte de todos los usuarios de una empesa
+void Reporte::reporteEmpresa(MatrizDispersa *md, string empresa)
+{
+    Graphviz graph;
+    graph.addln(graph.start_graph());
+    graph.addln("label=\"Empresa: " + empresa + "\";");
+    NodeM *tmpY = 0;
+    if (md->getY(empresa) != nullptr)
+        tmpY = md->getY(empresa)->getRight();
+
+    if (tmpY == nullptr)
+    {
+        cout << "No existe empresa!!\nPulse cualquier tecla y enter para seguir: ";
+        string pause;
+        cin >> pause;
+        return;
+    }
+    int contador = 0;
+    while (tmpY)
+    {
+        graph.addln("\tsubgraph cluster_" + to_string(contador) + " {\n\tnode[fontname=\"Arial\", color=\"blue\"];\n\tedge [color=\"green\"];");
+        reporteArbolAvl(tmpY->getData()->getArbolAvl()->getRaiz(), &graph);
+        graph.addln("\tlabel = \"Usuario: " + tmpY->getData()->getNombre() + "\";\n\t color=blue\n\t}"); //final de la grafica
+        tmpY = tmpY->getRight();
+        contador++;
+    }
+    graph.addln(graph.end());
+    graph.dotGraphGenerator(empresa, graph.getDotSource());
+    graph.setDotSource();
+    //cout << graph.getDotSource() << "\n";
+}
+
+//genera los reportes de todos los usuarios de un departamento.
+void Reporte::reporteDepartamento(MatrizDispersa *md, string departamento)
+{
+    Graphviz graph;
+    graph.addln(graph.start_graph());
+    graph.addln("label=\"Departartamento: " + departamento + "\";");
+    NodeM *tmpX = 0;
+    if (md->getX(departamento) != nullptr)
+        tmpX = md->getX(departamento)->getDown();
+    if (tmpX == 0)
+    {
+        cout << "No existe Departamento!!\nPulsa culaquier tacla y enter para seguir: ";
+        string pause;
+        cin>>pause;
+        return;
+    }
+    int contador = 0;
+    while (tmpX)
+    {
+        graph.addln("\tsubgraph cluster_" + to_string(contador) + " {\n\tnode[fontname=\"Arial\", color=\"blue\"];\n\tedge [color=\"green\"];");
+        reporteArbolAvl(tmpX->getData()->getArbolAvl()->getRaiz(), &graph);
+        graph.addln("\tlabel = \"Usuario: " + tmpX->getData()->getNombre() + "\";\n\tcolor=blue\n\t}"); //final de la grafica
+        tmpX = tmpX->getDown();
+        contador++;
+    }
+    graph.addln(graph.end());
+    graph.dotGraphGenerator(departamento, graph.getDotSource());
+    graph.setDotSource();
+    //cout << graph.getDotSource() << "\n";
 }
 
 //destructor

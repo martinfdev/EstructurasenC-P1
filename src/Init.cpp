@@ -128,8 +128,9 @@ void Init::test()
   else
    std::cout << b <<std::endl; 
   */
+
+  //MatrizDispersa *md = new MatrizDispersa();
   /*
-  MatrizDispersa *md = new MatrizDispersa();
   md->insertMatrix("Guatemala", "ZS", new Usuario("Pedro", "password"));
   md->insertMatrix("Huehue", "LARSA", new Usuario("Lucy", "password"));
   md->insertMatrix("Guatemala", "RSA", new Usuario("M", "password"));
@@ -151,18 +152,25 @@ void Init::test()
     else
     cout<<"false\n";
     */
-  /* md->insertMatrix("Guatemala", "Zoo", new Usuario("Pedro", "p"));
-   md->insertMatrix("Xela", "Axe", new Usuario("Miguel","n"));
-   md->insertMatrix("Huehue","LG", new Usuario("Kevin", "k"));
-   md->insertMatrix("Xela", "LG", new Usuario("Juan", "j"));
-   md->insertMatrix("Xela", "Zoo", new Usuario("H", "j"));
-  // md->insertMatrix("Huehue", "Zoo", new Usuario("Ar", "j"));
-  // md->insertMatrix("Guatemala", "Axe", new Usuario("Juan", "j"));
-  // md->insertMatrix("Huehue", "Axe", new Usuario("Juan", "j"));
-  // md->insertMatrix("Guatemala", "LG", new Usuario("Juan", "j"));
+  /*
+  md->insertMatrix("Guatemala", "Zoo", new Usuario("Pedro", "p"));
+  md->insertMatrix("Xela", "Zoo", new Usuario("H", "j"));
+  md->insertMatrix("Guatemala", "LG", new Usuario("sad", "j"));
+  md->insertMatrix("Guatemala", "Axe", new Usuario("Juan", "j"));
+  md->insertMatrix("Xela", "LG", new Usuario("an", "j"));
+  md->insertMatrix("Xela", "Axe", new Usuario("Miguel", "n"));
+  md->insertMatrix("Huehue", "Zoo", new Usuario("Ar", "j"));
+  md->insertMatrix("Huehue", "LG", new Usuario("Kevin", "k"));
+  md->insertMatrix("Huehue", "Axe", new Usuario("Juan", "j"));
+  md->insertMatrix("Huehue", "Axe", new Usuario("Juan", "j"));
+  Reporte r;
 
-   md->report();
- */
+  r.reporteDepartamento(md ,"Huehue");
+  cout << "------------------------------------------------------------\n\n";
+  r.reporteEmpresa(md, "Axe");
+  */
+  //md->report();
+
   /*
   catalogo->insertarUltimo(new Activo("mesa", "akdfhkajdf"));
   catalogo->insertarUltimo(new Activo("silla", "akdfhkajdf"));

@@ -11,7 +11,7 @@ MatrizDispersa::MatrizDispersa()
     graph = new Graphviz();
 }
 
-void MatrizDispersa::insertMatrix(string x, string y, Usuario *usuario)
+bool MatrizDispersa::insertMatrix(string x, string y, Usuario *usuario)
 {
     //nodos temporales para comprobaciones e insercion
     NodeM *tmpY = search_Row_Column(root->getDown(), y);
@@ -26,23 +26,23 @@ void MatrizDispersa::insertMatrix(string x, string y, Usuario *usuario)
         NodeM *newY = new NodeM("", y, 0);
         insertSortRow(newY, y);
         insertSortColumn(newX, x);
-        insertNode(newX, newY, new_node);
+        return insertNode(newX, newY, new_node);
     }
     else if (tmpY == nullptr && tmpX != nullptr)
     {
         NodeM *newY = new NodeM("", y, 0);
         insertSortRow(newY, y);
-        insertNode(tmpX, newY, new_node);
+        return insertNode(tmpX, newY, new_node);
     }
     else if (tmpY != nullptr && tmpX == nullptr)
     {
         NodeM *newX = new NodeM(x, "", 0);
         insertSortColumn(newX, x);
-        insertNode(newX, tmpY, new_node);
+        return insertNode(newX, tmpY, new_node);
     }
     else if (tmpY != nullptr && tmpX != nullptr)
     {
-        insertNode(tmpX, tmpY, new_node);
+        return insertNode(tmpX, tmpY, new_node);
     }
 }
 
@@ -126,8 +126,8 @@ bool MatrizDispersa::isEmpty()
     return false;
 }
 
-//metodo privado para imprimir la matriz
-void MatrizDispersa::show(NodeM *n)
+//metodo privado que busca en los ejex tanto x como y
+NodeM *MatrizDispersa::getXY(NodeM *n, string nombre)
 {
     if (isEmpty())
     {
@@ -139,7 +139,8 @@ void MatrizDispersa::show(NodeM *n)
         {
             while (n != nullptr)
             {
-                std::cout << n->getX() << "\n";
+                if (n->getX() == nombre)
+                    return n;
                 n = n->getRight();
             }
         }
@@ -147,28 +148,31 @@ void MatrizDispersa::show(NodeM *n)
         {
             while (n != nullptr)
             {
-                std::cout << n->getY() << "\n";
+                if (n->getY() == nombre)
+                    return n;
                 n = n->getDown();
             }
         }
     }
+    return 0;
 }
 
-//metodo publico para imprimir columnaX temporal para debug
-void MatrizDispersa::showX()
+//retorna un nodo de la matriz en eje X
+NodeM *MatrizDispersa::getX(string departamento)
 {
     if (!isEmpty())
     {
-        show(root->getRight());
+        return getXY(root->getRight(), departamento);
     }
 }
-//metodo publico para imprimir filaY temporal para debug
-void MatrizDispersa::showY()
+//retorna un nodo de la matriz en eje Y
+NodeM *MatrizDispersa::getY(string empresa)
 {
     if (!isEmpty())
     {
-        show(root->getDown());
+        return getXY(root->getDown(), empresa);
     }
+    return 0;
 }
 
 //devuelve El ultimo nodo si la columna o fila ya existe para no crearse de nuevo
@@ -201,7 +205,7 @@ NodeM *MatrizDispersa::search_Row_Column(NodeM *n, string position)
 }
 
 //insertar en el indice indicado
-void MatrizDispersa::insertNode(NodeM *x, NodeM *y, NodeM *new_node)
+bool MatrizDispersa::insertNode(NodeM *x, NodeM *y, NodeM *new_node)
 {
     if (x->getDown() == nullptr && y->getRight() == nullptr)
     {
@@ -291,24 +295,33 @@ void MatrizDispersa::insertNode(NodeM *x, NodeM *y, NodeM *new_node)
             if (Xposition->getX() == new_node->getX() && Yposition->getY() == new_node->getY())
             {
                 NodeM *tmp = recorridoProfundidad(Xposition);
-                if (!(tmp->getData()->getNombre() == new_node->getData()->getNombre()))
+                if (!(tmp->getDown()->getData()->getNombre() == new_node->getData()->getNombre()))
                 {
                     tmp->setBehind(new_node);
                     new_node->setFront(tmp);
-                }else
-                    cout<<"usuario "<<tmp->getData()->getNombre()<<" ya existe!!\n";
+                }
+                else
+                {
+                    cout << "usuario "
+                         << " ya existe!!\n\nPulse cualquier teclado y enter para continuar: ";
+                    string pause;
+                    cin >> pause;
+                    return false;
+                }
             }
         }
     }
+    return true;
 }
 
 //metodo para insertar donde ya existen usuarios en la matriz y decir si estan repetidos
 NodeM *MatrizDispersa::recorridoProfundidad(NodeM *n)
 {
-    while (n->getBehind() != nullptr)
-    {
-        n = n->getBehind();
-    }
+    if (n->getDown())
+        while (n->getBehind() != nullptr)
+        {
+            n = n->getBehind();
+        }
     return n;
 }
 
@@ -317,11 +330,11 @@ NodeM *MatrizDispersa::NodeColumnMed(NodeM *n, string y)
 {
     while (n != nullptr)
     {
-        if (n->getY() > y && n->getDown() == nullptr)
+        if (n->getY() == y && n->getDown() == nullptr)
         {
             return n->getUp();
         }
-        else if (n->getY() > y && n->getDown() != nullptr)
+        else if (n->getY() == y && n->getDown() != nullptr)
         {
             return n->getUp();
         }
@@ -337,11 +350,11 @@ NodeM *MatrizDispersa::NodeRowMed(NodeM *n, string x)
 {
     while (n != nullptr)
     {
-        if (n->getX() > x && n->getRight() == nullptr)
+        if (n->getX() == x && n->getRight() == nullptr)
         {
             return n->getLeft();
         }
-        else if (n->getX() > x && n->getRight() != nullptr)
+        else if (n->getX() == x && n->getRight() != nullptr)
         {
             return n->getLeft();
         }
@@ -603,7 +616,7 @@ void MatrizDispersa::setData(string x, string y, Usuario *data_)
 }
 
 //devuelve el usuario administrador creado al inicializar la matriz
-Usuario *MatrizDispersa::getAdmin(){return root->getData();} 
+Usuario *MatrizDispersa::getAdmin() { return root->getData(); }
 
 //destructor
 MatrizDispersa::~MatrizDispersa()

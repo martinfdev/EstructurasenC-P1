@@ -89,7 +89,7 @@ void Menu::login()
 void Menu::menuAdmin()
 {
     system("clear");
-    string opEr;
+    string opEr, depa = "", empresa = "", pause;
     int option;
     do
     {
@@ -121,11 +121,27 @@ void Menu::menuAdmin()
             break;
         case 3:
             system("clear");
-
+            cout << "Ingrese el nombre del deparatamento: ";
+            getline(cin, depa);
+            getline(cin, depa);
+            cout << endl;
+            if (depa != "")
+            {
+                Reporte().reporteDepartamento(matriz, depa);
+            }
+            system("clear");
             break;
         case 4:
             system("clear");
-
+            cout << "Ingrese el nombre de la empresa: ";
+            getline(cin, empresa);
+            getline(cin, empresa);
+            cout << endl;
+            if (empresa != "")
+            {
+                Reporte().reporteEmpresa(matriz, empresa);
+            }
+            system("clear");
             break;
         case 5:
             system("clear");
@@ -243,12 +259,17 @@ void Menu::crearUsuario()
     if (nombre != "" && password != "" && departamento != "" && empresa != "")
     {
         Usuario *n_usuario = new Usuario(nombre, password);
-        matriz->insertMatrix(departamento, empresa, n_usuario);
-        catalogo->add_endS(n_usuario);
-        cout << "\n\nUsuario " << nombre << " creado con exito!\n\n Pulse cualquier tecla y Enter!  ";
-        string t;
-        cin >> t;
-        system("clear");
+        bool secreo = matriz->insertMatrix(departamento, empresa, n_usuario);
+        if (secreo)
+        {
+            catalogo->add_endS(n_usuario);
+            cout << "\n\nUsuario " << nombre << " creado con exito!\n\n Pulse cualquier tecla y Enter!  ";
+            string t;
+            cin >> t;
+            system("clear");
+        }
+        else
+            system("clear");
     }
     else
     {
@@ -375,7 +396,7 @@ void Menu::rentaActivo(Usuario *usuario, string departamento, string empresa)
         cout << "|___________________CATALOGO DE ACTIVOS____________________|\n";
         cout << "\n";
         //llamamos el mentodo de la clase reporte para imprimir el catalogo
-        Reporte().printCatalogoActivos(catalogo);
+        Reporte().printCatalogoActivos(catalogo, usuario);
         cout << "Ingrese Opcion: ";
         cin >> entrada;
         option = atoi(entrada.c_str());
@@ -486,7 +507,7 @@ void Menu::misActivosRentados(Usuario *usuario)
     Reporte().printMisActivosRentados(usuario->getArbolAvl()->getRaiz());
     cout << "\nPulse cualquier tecla y enter para salir: ";
     string salir;
-    cin>>salir;
+    cin >> salir;
     system("clear");
 }
 
