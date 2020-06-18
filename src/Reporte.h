@@ -15,25 +15,24 @@
 class Reporte
 {
 private:
-    void reporteArbolAvl(NodeAvl<Activo*, string>*, Graphviz*);
+    void reporteArbolAvl(NodeAvl<Activo *, string> *, Graphviz *);
     string getDisponible(bool);
-    void printCatalgo(NodeAvl<Activo*, string> *);
+    void printCatalgo(NodeAvl<Activo *, string> *);
 
 public:
     Reporte();
-    void ReporteListaDobleCircular(ListaDoble<Transaccion*> *, std::string);
-    void ReporteListaSimple(Lista<int>*);
-    void reporteAVL(NodeAvl<Activo*, string>*);
+    void ReporteListaDobleCircular(ListaDoble<Transaccion *> *, std::string);
+    void ReporteListaSimple(Lista<int> *);
+    void reporteAVL(NodeAvl<Activo *, string> *, string);
     void reporteMtrizDispersa();
-    void inorden(NodeAvl<Activo*, string>*);
-    void preorden(NodeAvl<Activo*, string>*);
-    void printCatalogoActivos(Lista<Usuario*>*, Usuario*);
-    Activo* getActivoRenta(Lista<Usuario*>*, string);
-    void printMisActivosRentados(NodeAvl<Activo*, string>*);
-    void reporteEmpresa(MatrizDispersa*, string);
-    void reporteDepartamento(MatrizDispersa*, string);
-    void reporteActivosUsuario(string);
-    void reporteActivosRentadoUsuario(string);
-        ~Reporte();
+    void inorden(NodeAvl<Activo *, string> *);
+    void preorden(NodeAvl<Activo *, string> *);
+    void printCatalogoActivos(Lista<Usuario *> *, Usuario *);
+    Activo *getActivoRenta(Lista<Usuario *> *, string);
+    void printMisActivosRentados(NodeAvl<Activo *, string> *);
+    void reporteEmpresa(MatrizDispersa *, string);
+    void reporteDepartamento(MatrizDispersa *, string);
+    void reporteActivosRentadoUsuario(ListaDoble<Activo*> *, string);
+    ~Reporte();
 };
 #endif /*REPORTE_H*/

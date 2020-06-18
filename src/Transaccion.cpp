@@ -20,7 +20,7 @@ Transaccion::Transaccion(string activo_, string u_renta, string departamento_, s
       departamento(departamento_), empresa(empresa_), tiempo_renta(dias_)
 {
     fecha_renta = date();
-    idT = md15(getT());
+    idT = md15(getT()+activo_);
 }
 
 //metodo que devuelva la fecha en formato string

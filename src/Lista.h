@@ -38,7 +38,7 @@ class Lista
         T del_by_position(int );
         void del_by_data(T);
         void sort();
-        
+        Node<T>* getHeadNode();
         ~Lista();
 
     private:

@@ -89,13 +89,13 @@ void Reporte::reporteArbolAvl(NodeAvl<Activo *, string> *raiz, Graphviz *graph)
 }
 
 //metodo publico para el reporte del arbol avl
-void Reporte::reporteAVL(NodeAvl<Activo *, string> *raiz)
+void Reporte::reporteAVL(NodeAvl<Activo *, string> *raiz, string n_usuario)
 {
     Graphviz *graph = new Graphviz();
     graph->addln(graph->start_graph());
-    graph->addln("node[fontname=\"Arial\", color=\"blue\"]");
-    graph->addln("edge [color=\"green\"]");
+    graph->addln("\tsubgraph cluster0 {\n\tnode[fontname=\"Arial\", color=\"blue\"]\n\tedge [color=\"green\"]");
     reporteArbolAvl(raiz, graph);
+    graph->addln("\tlabel = \t\"Usuario: " + n_usuario + "\";\n\t color=red\n\t}");
     graph->addln(graph->end());
     graph->dotGraphGenerator("ArbolAVL", graph->getDotSource());
     graph->setDotSource();
@@ -207,7 +207,7 @@ void Reporte::reporteEmpresa(MatrizDispersa *md, string empresa)
         contador++;
     }
     graph.addln(graph.end());
-    graph.dotGraphGenerator(empresa, graph.getDotSource());
+    graph.dotGraphGenerator("ReporteEmpresa", graph.getDotSource());
     graph.setDotSource();
     //cout << graph.getDotSource() << "\n";
 }
@@ -225,7 +225,7 @@ void Reporte::reporteDepartamento(MatrizDispersa *md, string departamento)
     {
         cout << "No existe Departamento!!\nPulsa culaquier tacla y enter para seguir: ";
         string pause;
-        cin>>pause;
+        cin >> pause;
         return;
     }
     int contador = 0;
@@ -238,9 +238,48 @@ void Reporte::reporteDepartamento(MatrizDispersa *md, string departamento)
         contador++;
     }
     graph.addln(graph.end());
-    graph.dotGraphGenerator(departamento, graph.getDotSource());
+    graph.dotGraphGenerator("ReporteDepartamento", graph.getDotSource());
     graph.setDotSource();
     //cout << graph.getDotSource() << "\n";
+}
+
+//genera el reporte de los activos rentados por un usuario
+void Reporte::reporteActivosRentadoUsuario(ListaDoble<Activo *> *lactivos, string n_usuario)  
+{
+    Graphviz *graph = new Graphviz();
+    graph->addln(graph->start_graph());
+    graph->addln("rankdir=LR;");
+    graph->addln("node [shape=record, color=blue];");
+    graph->addln("label=\"Usuario: "+n_usuario+"\"");
+    int contador = 0, sizeL;
+    string nodos, enlaces;
+    Node<Activo *> *temp = 0;
+    if (lactivos->getPrimero()){
+        temp = lactivos->getPrimero();
+        sizeL = lactivos->getSize();
+    }
+    while (temp != nullptr)
+    {
+        if (contador < sizeL - 1)
+        {
+            nodos = nodos + "node" + to_string(contador) + " [label=\"{ID: " + temp->getData()->getIdActivo() + "\\n"+temp->getData()->getNombre()+"\\nTiempo: "+to_string(temp->getData()->getTiempo())+"|<b>}\"];\n";
+            enlaces = enlaces + "node" + to_string(contador) + ":b:c -> node" + to_string(contador + 1) + ":c [arrowtail=dot, dir=both,tailclip=false];\n";
+        }
+        else
+        {
+            nodos = nodos + "node" + to_string(contador) + " [label=\"{ID: " + temp->getData()->getIdActivo() + "\\n"+temp->getData()->getNombre()+"\\nTiempo: "+to_string(temp->getData()->getTiempo())+"|<b>}\"];\n";
+            nodos = nodos + "node" + to_string(contador + 1) + " [shape=point];\n";
+            enlaces = enlaces + "node" + to_string(contador) + ":b:c -> node" + to_string(contador + 1) + ":c [arrowtail=dot, dir=both,tailclip=false];\n";
+        }
+
+        contador++;
+        temp = temp->getNext();
+    }
+    graph->addln(nodos);
+    graph->addln(enlaces);
+    graph->addln(graph->end());
+    graph->dotGraphGenerator("ActivosRentados", graph->getDotSource());
+    graph->setDotSource();
 }
 
 //destructor

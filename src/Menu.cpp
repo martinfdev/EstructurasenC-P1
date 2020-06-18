@@ -6,6 +6,7 @@
 
 #include "Menu.h"
 #include "Reporte.h"
+#include "Ordenamiento.h"
 
 Menu::Menu(ListaDoble<Transaccion *> *historialT_, MatrizDispersa *matriz_, Lista<Usuario *> *catalago_) : historialT(historialT_), matriz(matriz_), catalogo(catalago_)
 {
@@ -72,7 +73,7 @@ void Menu::login()
     }
     else
     {
-        Usuario *tmp = matriz->searchM(departamento, empresa); //obtiene el usario en esa posicion
+        Usuario *tmp = matriz->searchM(departamento, empresa, nombreUsu); //obtiene el usario en esa posicion
         if (tmp && tmp->getNombre() == nombreUsu && tmp->getPassword() == password)
         {
             menuUsuario(tmp, departamento, empresa);
@@ -150,15 +151,18 @@ void Menu::menuAdmin()
             break;
         case 6:
             system("clear");
-
+            rActivosUsuario();
+            system("clear");
             break;
         case 7:
             system("clear");
-
+            repRentaUsuario();
+            system("clear");
             break;
         case 8:
             system("clear");
-
+            ordenar();
+            system("clear");
             break;
         default:
             system("clear");
@@ -228,7 +232,7 @@ void Menu::menuUsuario(Usuario *usuario, string departamento_, string empresa_)
         case 7:
             system("clear");
             if (usuario->getArbolAvl()->getRaiz())
-                Reporte().reporteAVL(usuario->getArbolAvl()->getRaiz());
+                Reporte().reporteAVL(usuario->getArbolAvl()->getRaiz(), usuario->getNombre());
             system("clear");
             break;
         default:
@@ -417,7 +421,7 @@ void Menu::rentandoActivo(Usuario *usuario, string departamento, string empresa)
 {
     Activo *dev = 0;
     string id;
-    cout << "|=====================+RENTA ACTIVO+=======================|\n\n";
+    cout << "|=====================+RENTANDO ACTIVO+=======================|\n\n";
     cout << "Ingresar ID de Activo a Rentar: ";
     getline(cin, id);
     getline(cin, id);
@@ -509,6 +513,84 @@ void Menu::misActivosRentados(Usuario *usuario)
     string salir;
     cin >> salir;
     system("clear");
+}
+
+//metodo dondo se genera los reportes de los activos de un usuario en espesifico
+void Menu::rActivosUsuario()
+{
+    string departamento, empresa, usuario, pause;
+    cout << "Nombre del departamento: ";
+    getline(cin, departamento);
+    getline(cin, departamento);
+    cout << "\nNombre de la empresa:";
+    getline(cin, empresa);
+    cout << "\nNombre del usuario:";
+    getline(cin, usuario);
+    Usuario *user = 0;
+    user = matriz->searchM(departamento, empresa, usuario);
+    if (user)
+        Reporte().reporteAVL(user->getArbolAvl()->getRaiz(), usuario);
+    else
+    {
+        cout << "\nUsuario no existe!!\n\nPresione enter para seguir ";
+        getline(cin, pause);
+    }
+}
+
+//metodo para el reporte de rentas de un usuario
+void Menu::repRentaUsuario()
+{
+    string departamento, empresa, usuario, pause;
+    cout << "Nombre del departamento: ";
+    getline(cin, departamento);
+    getline(cin, departamento);
+    cout << "\nNombre de la empresa:";
+    getline(cin, empresa);
+    cout << "\nNombre del usuario:";
+    getline(cin, usuario);
+    Usuario *user = 0;
+    user = matriz->searchM(departamento, empresa, usuario);
+    if (user)
+        Reporte().reporteActivosRentadoUsuario(user->getActivoRen(), usuario);
+    else
+    {
+        cout << "\nUsuario no existe!!\n\nPresione enter para seguir ";
+        getline(cin, pause);
+    }
+}
+
+//submenu de ordenas Transacciones
+void Menu::ordenar()
+{
+    int option;
+    string entrada;
+    do
+    {
+        cout << "|=====================+ORDENAR TRANSACCIONES+=======================|\n";
+        cout << "|\t*1.  Ordenar Ascendente*\t\t\t\t    |\n";
+        cout << "|\t*2.  Ordenar Descendente *\t\t\t\t    |\n";
+        cout << "|\t*3.  Regresar *\t\t\t\t\t\t    |\n";
+        cout << "|___________________________________________________________________|\n";
+        cout << "\n";
+        cout << "Ingrese Opcion: ";
+        cin >> entrada;
+        option = atoi(entrada.c_str());
+        switch (option)
+        {
+        case 1:
+            Ordenamiento().ordenarListaDobleA(historialT);
+            Reporte().ReporteListaDobleCircular(historialT, "RTransaccionesAs");
+            break;
+        case 2:
+            Ordenamiento().ordenarListaDobleA(historialT);
+            Ordenamiento().ordenarListaDobleDes(historialT);
+            Reporte().ReporteListaDobleCircular(historialT, "RTransaccionesDes");
+        break;
+        default:
+            system("clear");
+            break;
+        }
+    } while (option != 3);
 }
 
 //destructor

@@ -20,6 +20,7 @@
 #include "MD5.cpp"
 #include "Menu.cpp"
 #include "Transaccion.cpp"
+#include "Ordenamiento.cpp"
 
 using std::cout;
 using std::string;
@@ -43,7 +44,9 @@ void Init::start()
 //metodo para hacer pruebas de funcionalidad
 void Init::test()
 {
-  /*  //prueba lista circular doble y grafico
+  //prueba lista circular doble y grafico
+
+  /*
     string in;
     ListaDoble<Transaccion*> *ld = new ListaDoble<Transaccion*>();
     ld->insertarUltimoC(new Transaccion("adslfkjee2153lk", "pedro", "", "", 90));
@@ -55,7 +58,12 @@ void Init::test()
     ld->insertarUltimoC(new Transaccion("lfkjeo83902897l", "Mario", "", "", 25));
     cin>>in;
     ld->insertarUltimoC(new Transaccion("asdjleio98278id", "Rebe", "", "", 234));
+    
     //ld->reportStringC("listaCircular");
+    //Reporte().ReporteListaDobleCircular(ld, "RTransacciones");
+    Ordenamiento().ordenarListaDobleA(ld);
+    cout<<ld->getSize();
+    Ordenamiento().ordenarListaDobleDes(ld);
     Reporte().ReporteListaDobleCircular(ld, "RTransacciones");
   */
 

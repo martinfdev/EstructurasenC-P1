@@ -28,6 +28,12 @@ template<typename T>
 void Node<T>::setBehind(Node<T>* behind){
     this->behind = behind;
 }
+
+template <typename T>
+void Node<T>::setData(T data_){
+    data = data_;
+}
+
 //getters
 template<typename T>
 Node<T>* Node<T>::getNext(){

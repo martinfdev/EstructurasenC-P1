@@ -27,6 +27,7 @@ private:
     bool posxyBusy(NodeM*, string, string);
     Graphviz* graph;
     NodeM *recorridoProfundidad(NodeM*);
+    NodeM *searchMatrix(string, string);
 public:
     MatrizDispersa();
     bool insertMatrix(string, string, Usuario*);
@@ -37,7 +38,7 @@ public:
     NodeM* getX(string);
     void showMatrix();
     void report();
-    Usuario* searchM(string, string);
+    Usuario* searchM(string, string, string);
     void setData(string, string, Usuario*);
     Usuario* getAdmin();
     ~MatrizDispersa();

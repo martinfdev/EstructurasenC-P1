@@ -113,7 +113,6 @@ NodeAvl<T, G> *TAVL<T, G>::insertarInterno(NodeAvl<T, G> *nodo, T dato, G llave)
     if (nodo == 0)
     {
         return (new NodeAvl<T, G>(dato, llave));
-        std::cout << llave << "\n";
     }
     if (llave < nodo->getLlave())
         nodo->setIzquierda(insertarInterno(nodo->getIzquierda(), dato, llave));

@@ -36,7 +36,9 @@ private:
     void activosRentados(Usuario*, string, string);
     void devolverActivo(Usuario*);
     void misActivosRentados(Usuario*);
-
+    void rActivosUsuario();
+    void repRentaUsuario();
+    void ordenar();
 public:
     Menu(ListaDoble<Transaccion *> *, MatrizDispersa *, Lista<Usuario*> *);
     void menuIni(); //menu de inicio de sesion

@@ -294,8 +294,9 @@ bool MatrizDispersa::insertNode(NodeM *x, NodeM *y, NodeM *new_node)
             NodeM *Yposition = NodeRowMed(y, new_node->getX());
             if (Xposition->getX() == new_node->getX() && Yposition->getY() == new_node->getY())
             {
-                NodeM *tmp = recorridoProfundidad(Xposition);
-                if (!(tmp->getDown()->getData()->getNombre() == new_node->getData()->getNombre()))
+                NodeM* tmp1 = searchMatrix(new_node->getX(), new_node->getY());
+                NodeM *tmp = recorridoProfundidad(tmp1);
+                if (!(tmp->getData()->getNombre() == new_node->getData()->getNombre()))
                 {
                     tmp->setBehind(new_node);
                     new_node->setFront(tmp);
@@ -317,7 +318,7 @@ bool MatrizDispersa::insertNode(NodeM *x, NodeM *y, NodeM *new_node)
 //metodo para insertar donde ya existen usuarios en la matriz y decir si estan repetidos
 NodeM *MatrizDispersa::recorridoProfundidad(NodeM *n)
 {
-    if (n->getDown())
+    if (n)
         while (n->getBehind() != nullptr)
         {
             n = n->getBehind();
@@ -568,7 +569,7 @@ bool MatrizDispersa::posxyBusy(NodeM *n, string x, string y)
 }
 
 //busqueda en la matriz devuelve el dato almacenado dados las posiciones
-Usuario *MatrizDispersa::searchM(string x, string y)
+Usuario *MatrizDispersa::searchM(string x, string y, string n_usuario)
 {
     NodeM *tempY = root->getDown();
     NodeM *tempX;
@@ -581,9 +582,15 @@ Usuario *MatrizDispersa::searchM(string x, string y)
             {
                 if (tempX->getX() == x && tempY->getY() == y)
                 {
+                    if (tempX->getBehind())
+                        while (tempX)
+                        {
+                            if (tempX->getData()->getNombre() == n_usuario)
+                                return tempX->getData();
+                            tempX = tempX->getBehind();
+                        }
                     return tempX->getData();
                 }
-
                 tempX = tempX->getRight();
             }
             tempY = tempY->getDown();
@@ -617,6 +624,28 @@ void MatrizDispersa::setData(string x, string y, Usuario *data_)
 
 //devuelve el usuario administrador creado al inicializar la matriz
 Usuario *MatrizDispersa::getAdmin() { return root->getData(); }
+
+//devuelve un nodo ya existente en la matriz en los indices indicados
+NodeM* MatrizDispersa::searchMatrix(string x, string y){
+    NodeM *tempY = root->getDown();
+    NodeM *tempX;
+    if (!isEmpty())
+    {
+        while (tempY != NULL)
+        {
+            tempX = tempY->getRight();
+            while (tempX != NULL)
+            {
+                if (tempX->getX() == x && tempY->getY() == y)
+                {
+                    return tempX;
+                }
+                tempX = tempX->getRight();
+            }
+            tempY = tempY->getDown();
+        }
+    }
+}
 
 //destructor
 MatrizDispersa::~MatrizDispersa()

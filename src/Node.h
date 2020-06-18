@@ -6,25 +6,27 @@
 #define NODE_H
 #include <string>
 #include <iostream>
-#include <stdlib.h> 
+#include <stdlib.h>
 
 using namespace std;
 
-template<class T>
+template <class T>
 class Node
 {
 public:
     Node();
     Node(T);
-    void setNext(Node*);
-    void setBehind(Node*);
-    Node* getNext();
-    Node* getBehind();
+    void setNext(Node *);
+    void setBehind(Node *);
+    void setData(T);
+    Node *getNext();
+    Node *getBehind();
     T getData();
     ~Node();
-    private:
+
+private:
     T data;
-    Node* next;
-    Node* behind;
+    Node *next;
+    Node *behind;
 };
 #endif /*NODE H*/

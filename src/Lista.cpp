@@ -106,7 +106,7 @@ T Lista<T>::del_headS()
 {
     if (!isEmptyS())
     {
-        Node<T>* temp = m_head;
+        Node<T> *temp = m_head;
         T tmpData = temp->getData();
         m_head = m_head->getNext();
         sizeL--;
@@ -455,6 +455,10 @@ T Lista<T>::getDataC()
 //devuelve el primer dato de la lista
 template <typename T>
 T Lista<T>::getDataFirst() { return m_head->getData(); }
+
+//devuelve el nodo cabeza de la lista
+template <typename T>
+Node<T> *Lista<T>::getHeadNode() { return m_head; }
 
 template <typename T>
 Lista<T>::~Lista() {}

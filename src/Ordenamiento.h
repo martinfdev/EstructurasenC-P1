@@ -6,13 +6,16 @@
 */
 #ifndef ORDENAMIENTO_H
 #define ORDENAMIENTO_H
-
+#include "ListaDoble.h"
+#include "Transaccion.h"
+#include "Lista.h"
 class Ordenamiento
 {
 private:
-    /* data */
 public:
     Ordenamiento(/* args */);
+    void ordenarListaDobleA(ListaDoble<Transaccion *> *);
+    void ordenarListaDobleDes(ListaDoble<Transaccion *>* );
     ~Ordenamiento();
 };
 

@@ -516,6 +516,9 @@ T ListaDoble<T>::getDataC()
 template <typename T>
 Node<T>* ListaDoble<T>::getPrimero(){return primero;}
 
+//limpia la lista
+template <typename T>
+void ListaDoble<T>::emptyList(){primero = ultimo =0; size =0;}
 
 //destructor de la lista
 template <typename T>

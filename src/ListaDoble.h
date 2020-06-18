@@ -39,6 +39,7 @@ public:
     T getDataBack();
     T getDataNext();
     T getDataC();
+    void emptyList();
     virtual ~ListaDoble();
 
 private:
@@ -49,5 +50,6 @@ private:
     void insertarFinal(Node<T> *, T);
     T borrarNodo(Node<T> *);
     void insertarC(Node<T> *, T, bool);
+    
 };
 #endif /* LISTADOBLE_H */
