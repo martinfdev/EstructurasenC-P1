@@ -6,50 +6,34 @@ graph[ nodesep = 0.5];
 nodeXY [label="Emp\\Dep"];
 nodeXG [label="G"];
 nodeXH [label="H"];
-nodeXGuatemala [label="Guatemala"];
-nodeXHuehue [label="Huehue"];
-nodeXS [label="S"];
+nodeXasdf [label="asdf"];
 
 nodeYA [label="A"];
 nodeYS [label="S"];
-nodeYG [label="G"];
+nodeYs [label="s"];
 
-nodevGA [label="p"];
-nodevGuatemalaA [label="pedro"];
-nodevGS [label="Sad"];
-nodevHS [label="j"];
-nodevHuehueS [label="sofia"];
-nodevGuatemalaG [label="K"];
-nodevSG [label="Mario"];
+nodevGA [label="pedro"];
+nodevHS [label="juan"];
+nodevasdfs [label="oirew"];
 
 nodeXY -> nodeXG [dir=both];
 nodeXG -> nodeXH [dir=both];
-nodeXH -> nodeXGuatemala [dir=both];
-nodeXGuatemala -> nodeXHuehue [dir=both];
-nodeXHuehue -> nodeXS [dir=both];
+nodeXH -> nodeXasdf [dir=both];
 
 nodeXY -> nodeYA [dir=both];
 nodeYA -> nodeYS [dir=both];
-nodeYS -> nodeYG [dir=both];
+nodeYS -> nodeYs [dir=both];
 
 nodeXG -> nodevGA [dir=both];
-nodevGA -> nodevGS [dir=both];
 nodeXH -> nodevHS [dir=both];
-nodeXGuatemala -> nodevGuatemalaA [dir=both];
-nodevGuatemalaA -> nodevGuatemalaG [dir=both];
-nodeXHuehue -> nodevHuehueS [dir=both];
-nodeXS -> nodevSG [dir=both];
+nodeXasdf -> nodevasdfs [dir=both];
 nodeYA -> nodevGA [constraint=false, dir=both];
-nodevGA -> nodevGuatemalaA [constraint=false, dir=both];
-nodeYS -> nodevGS [constraint=false, dir=both];
-nodevGS -> nodevHS [constraint=false, dir=both];
-nodevHS -> nodevHuehueS [constraint=false, dir=both];
-nodeYG -> nodevGuatemalaG [constraint=false, dir=both];
-nodevGuatemalaG -> nodevSG [constraint=false, dir=both];
+nodeYS -> nodevHS [constraint=false, dir=both];
+nodeYs -> nodevasdfs [constraint=false, dir=both];
 
-{rank=same; nodeXY; nodeXG; nodeXH; nodeXGuatemala; nodeXHuehue; nodeXS; }
-{rank=same; nodeYA; nodevGA; nodevGuatemalaA; }
-{rank=same; nodeYS; nodevGS; nodevHS; nodevHuehueS; }
-{rank=same; nodeYG; nodevGuatemalaG; nodevSG; }
+{rank=same; nodeXY; nodeXG; nodeXH; nodeXasdf; }
+{rank=same; nodeYA; nodevGA; }
+{rank=same; nodeYS; nodevHS; }
+{rank=same; nodeYs; nodevasdfs; }
 }
 

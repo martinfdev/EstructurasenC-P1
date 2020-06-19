@@ -46,26 +46,27 @@ void Init::test()
 {
   //prueba lista circular doble y grafico
 
-  /*
+  
     string in;
     ListaDoble<Transaccion*> *ld = new ListaDoble<Transaccion*>();
     ld->insertarUltimoC(new Transaccion("adslfkjee2153lk", "pedro", "", "", 90));
-    cin>>in;
+   // cin>>in;
     ld->insertarUltimoC(new Transaccion("asdfasdf9023890", "juan", "", "", 8));
-    cin>>in;
+   // cin>>in;
     ld->insertarUltimoC(new Transaccion("s9823haslalndlk", "luis", "", "", 23));
-    cin>>in;
+   // cin>>in;
     ld->insertarUltimoC(new Transaccion("lfkjeo83902897l", "Mario", "", "", 25));
-    cin>>in;
+   // cin>>in;
     ld->insertarUltimoC(new Transaccion("asdjleio98278id", "Rebe", "", "", 234));
     
     //ld->reportStringC("listaCircular");
-    //Reporte().ReporteListaDobleCircular(ld, "RTransacciones");
+    Reporte().ReporteListaDobleCircular(ld, "RTransacciones");
     Ordenamiento().ordenarListaDobleA(ld);
     cout<<ld->getSize();
+    cin>>in;
     Ordenamiento().ordenarListaDobleDes(ld);
     Reporte().ReporteListaDobleCircular(ld, "RTransacciones");
-  */
+  
 
   /*Activo *ac = new Activo("Silla", "silla secretaria");
     cout << "Id Activo\t" << ac->getIdActivo() << endl;

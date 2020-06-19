@@ -1,0 +1,33 @@
+digraph G {
+rankdir=LR;
+node [shape=record, color=blue, width=0.5, height=0.5]; 
+
+node0 [label="{<a>|ID T: adbc07fcd2baf9f\nID A: 818f9c45cfa30ee\nUsuario: juan\nTiempo: 44 dias|<b>}"];
+node1 [label="{<a>|ID T: 2193e0655fd2634\nID A: 39c5438add74266\nUsuario: juan\nTiempo: 64 dias|<b>}"];
+node2 [label="{<a>|ID T: 7912e3602714d8d\nID A: c7701f5df0b35e4\nUsuario: juan\nTiempo: 65343 dias|<b>}"];
+node3 [label="{<a>|ID T: 2ac62154d5b3ab2\nID A: c5b997f52719d86\nUsuario: juan\nTiempo: 12 dias|<b>}"];
+node4 [label="{<a>|ID T: de68a057e886892\nID A: 36d8f49c7eb1e06\nUsuario: pedro\nTiempo: 45 dias|<b>}"];
+node5 [label="{<a>|ID T: f1063eda1b6f454\nID A: b479e400a9249de\nUsuario: pedro\nTiempo: 75 dias|<b>}"];
+node6 [label="{<a>|ID T: 9422a9fae4536d9\nID A: 4c745565b4e32fb\nUsuario: pedro\nTiempo: 22 dias|<b>}"];
+node7 [label="{<a>|ID T: 72cc4b1b739fc7a\nID A: af543680abc5db2\nUsuario: pedro\nTiempo: 55 dias|<b>}"];
+
+node0:b:c -> node1:a:c [arrowtail=dot, dir=both,tailclip=false];
+node1:b:c -> node2:a:c [arrowtail=dot, dir=both,tailclip=false];
+node2:b:c -> node3:a:c [arrowtail=dot, dir=both,tailclip=false];
+node3:b:c -> node4:a:c [arrowtail=dot, dir=both,tailclip=false];
+node4:b:c -> node5:a:c [arrowtail=dot, dir=both,tailclip=false];
+node5:b:c -> node6:a:c [arrowtail=dot, dir=both,tailclip=false];
+node6:b:c -> node7:a:c [arrowtail=dot, dir=both,tailclip=false];
+node7:b:c -> node0:a:c [arrowtail=dot, dir=both,tailclip=false];
+
+node1:a:c -> node0:b:c [arrowtail=dot, dir=both,tailclip=false];
+node2:a:c -> node1:b:c [arrowtail=dot, dir=both,tailclip=false];
+node3:a:c -> node2:b:c [arrowtail=dot, dir=both,tailclip=false];
+node4:a:c -> node3:b:c [arrowtail=dot, dir=both,tailclip=false];
+node5:a:c -> node4:b:c [arrowtail=dot, dir=both,tailclip=false];
+node6:a:c -> node5:b:c [arrowtail=dot, dir=both,tailclip=false];
+node7:a:c -> node6:b:c [arrowtail=dot, dir=both,tailclip=false];
+node0:a:c -> node7:b:c [arrowtail=dot, dir=both,tailclip=false];
+
+}
+

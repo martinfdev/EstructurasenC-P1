@@ -1,26 +1,34 @@
 digraph G {
 node[fontname="Arial", color="blue"]
 edge [color="green"]
-"abef17166794013"[label="abef17166794013\nactivo21\nDisponible = si"];
-"abef17166794013" -> "9a629713d477dfc";
-"9a629713d477dfc"[label="9a629713d477dfc\nactivo 25\nDisponible = si"];
-"9a629713d477dfc" -> "723191589efe1fb";
-"723191589efe1fb"[label="723191589efe1fb\nactivo24\nDisponible = si"]
-null36 [shape=point];
-"723191589efe1fb" -> null36;
-null37 [shape=point];
-"723191589efe1fb" -> null37;
-"9a629713d477dfc" -> "9bf3625fbbf1420";
-"9bf3625fbbf1420"[label="9bf3625fbbf1420\nactivo23\nDisponible = si"]
-null38 [shape=point];
-"9bf3625fbbf1420" -> null38;
-null39 [shape=point];
-"9bf3625fbbf1420" -> null39;
-"abef17166794013" -> "fa723952e021216";
-"fa723952e021216"[label="fa723952e021216\nactivo22\nDisponible = si"]
-null40 [shape=point];
-"fa723952e021216" -> null40;
-null41 [shape=point];
-"fa723952e021216" -> null41;
+"6a0b24ecac8c182"[label="6a0b24ecac8c182\nwervzsd\nDisponible = no"];
+"6a0b24ecac8c182" -> "442ae74fafd1cbe";
+"442ae74fafd1cbe"[label="442ae74fafd1cbe\nas3etxvzxas\nDisponible = no"];
+"442ae74fafd1cbe" -> "3349ae9bd464459";
+"3349ae9bd464459"[label="3349ae9bd464459\ndio4i\nDisponible = si"];
+"3349ae9bd464459" -> "134ff16853b0f62";
+"134ff16853b0f62"[label="134ff16853b0f62\nasdf asfd44tasd23\nDisponible = no"]
+null0 [shape=point];
+"134ff16853b0f62" -> null0;
+null1 [shape=point];
+"134ff16853b0f62" -> null1;
+null2 [shape=point];
+"3349ae9bd464459" -> null2;
+"442ae74fafd1cbe" -> "625472113517be5";
+"625472113517be5"[label="625472113517be5\n2451sdvaf345xcvsadds\nDisponible = no"]
+null3 [shape=point];
+"625472113517be5" -> null3;
+null4 [shape=point];
+"625472113517be5" -> null4;
+"6a0b24ecac8c182" -> "c25aaa0f681760d";
+"c25aaa0f681760d"[label="c25aaa0f681760d\naw54433gasdf\nDisponible = no"];
+"c25aaa0f681760d" -> "7c0b10c5b44aba1";
+"7c0b10c5b44aba1"[label="7c0b10c5b44aba1\n34asdf as\nDisponible = si"]
+null5 [shape=point];
+"7c0b10c5b44aba1" -> null5;
+null6 [shape=point];
+"7c0b10c5b44aba1" -> null6;
+null7 [shape=point];
+"c25aaa0f681760d" -> null7;
 }
 

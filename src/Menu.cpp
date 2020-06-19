@@ -578,14 +578,24 @@ void Menu::ordenar()
         switch (option)
         {
         case 1:
-            Ordenamiento().ordenarListaDobleA(historialT);
-            Reporte().ReporteListaDobleCircular(historialT, "RTransaccionesAs");
+            system("clear");
+            if (historialT->getSize()>0)
+            {
+                Ordenamiento().ordenarListaDobleA(historialT);
+                Reporte().ReporteListaDobleCircular(historialT, "RTransaccionesAs");
+            }
+            system("clear");
             break;
         case 2:
-            Ordenamiento().ordenarListaDobleA(historialT);
-            Ordenamiento().ordenarListaDobleDes(historialT);
-            Reporte().ReporteListaDobleCircular(historialT, "RTransaccionesDes");
-        break;
+            system("clear");
+            if (historialT->getSize()>0)
+            {
+                Ordenamiento().ordenarListaDobleA(historialT);
+                Ordenamiento().ordenarListaDobleDes(historialT);
+                Reporte().ReporteListaDobleCircular(historialT, "RTransaccionesDes");
+            }
+            system("clear");
+            break;
         default:
             system("clear");
             break;

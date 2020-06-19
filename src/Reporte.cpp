@@ -158,13 +158,14 @@ void Reporte::printCatalgo(NodeAvl<Activo *, string> *root)
 //metodo que devuelve un activo con el id espesificado
 Activo *Reporte::getActivoRenta(Lista<Usuario *> *listU, string id)
 {
-    for (size_t i = 0; i < listU->size(); i++)
-    {
-        Usuario *utmp = listU->getData();
-        NodeAvl<Activo *, string> *ntmp = utmp->getArbolAvl()->buscar(id);
-        if (ntmp)
-            return ntmp->getDato();
-    }
+    if (listU)
+        for (size_t i = 0; i < listU->size(); i++)
+        {
+            Usuario *utmp = listU->getData();
+            NodeAvl<Activo *, string> *ntmp = utmp->getArbolAvl()->buscar(id);
+            if (ntmp)
+                return ntmp->getDato();
+        }
     return nullptr;
 }
 
@@ -244,17 +245,18 @@ void Reporte::reporteDepartamento(MatrizDispersa *md, string departamento)
 }
 
 //genera el reporte de los activos rentados por un usuario
-void Reporte::reporteActivosRentadoUsuario(ListaDoble<Activo *> *lactivos, string n_usuario)  
+void Reporte::reporteActivosRentadoUsuario(ListaDoble<Activo *> *lactivos, string n_usuario)
 {
     Graphviz *graph = new Graphviz();
     graph->addln(graph->start_graph());
     graph->addln("rankdir=LR;");
     graph->addln("node [shape=record, color=blue];");
-    graph->addln("label=\"Usuario: "+n_usuario+"\"");
+    graph->addln("label=\"Usuario: " + n_usuario + "\"");
     int contador = 0, sizeL;
     string nodos, enlaces;
     Node<Activo *> *temp = 0;
-    if (lactivos->getPrimero()){
+    if (lactivos->getPrimero())
+    {
         temp = lactivos->getPrimero();
         sizeL = lactivos->getSize();
     }
@@ -262,12 +264,12 @@ void Reporte::reporteActivosRentadoUsuario(ListaDoble<Activo *> *lactivos, strin
     {
         if (contador < sizeL - 1)
         {
-            nodos = nodos + "node" + to_string(contador) + " [label=\"{ID: " + temp->getData()->getIdActivo() + "\\n"+temp->getData()->getNombre()+"\\nTiempo: "+to_string(temp->getData()->getTiempo())+"|<b>}\"];\n";
+            nodos = nodos + "node" + to_string(contador) + " [label=\"{ID: " + temp->getData()->getIdActivo() + "\\n" + temp->getData()->getNombre() + "\\nTiempo: " + to_string(temp->getData()->getTiempo()) + "|<b>}\"];\n";
             enlaces = enlaces + "node" + to_string(contador) + ":b:c -> node" + to_string(contador + 1) + ":c [arrowtail=dot, dir=both,tailclip=false];\n";
         }
         else
         {
-            nodos = nodos + "node" + to_string(contador) + " [label=\"{ID: " + temp->getData()->getIdActivo() + "\\n"+temp->getData()->getNombre()+"\\nTiempo: "+to_string(temp->getData()->getTiempo())+"|<b>}\"];\n";
+            nodos = nodos + "node" + to_string(contador) + " [label=\"{ID: " + temp->getData()->getIdActivo() + "\\n" + temp->getData()->getNombre() + "\\nTiempo: " + to_string(temp->getData()->getTiempo()) + "|<b>}\"];\n";
             nodos = nodos + "node" + to_string(contador + 1) + " [shape=point];\n";
             enlaces = enlaces + "node" + to_string(contador) + ":b:c -> node" + to_string(contador + 1) + ":c [arrowtail=dot, dir=both,tailclip=false];\n";
         }
